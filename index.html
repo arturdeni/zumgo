@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Zumgo</title>
     <style>
       /* Cargar fuentes desde archivo local */
       @font-face {
         font-family: "Emilia Note";
-        src: url("./fonts/EmiliaNote.otf") format("opentype");
+        src: url("./fonts/emilianote.otf") format("opentype");
         font-weight: normal;
         font-style: normal;
       }
@@ -175,6 +176,20 @@
       }
 
       /* Responsive */
+      @media (min-width: 1680px) {
+        .curved-text-container-1 {
+          left: 24%;
+        }
+
+        .curved-text-container-2 {
+          right: 19%;
+        }
+
+        .curved-text-container-3 {
+          width: 65%;
+        }
+      }
+
       @media (max-width: 1240px) {
         .curved-text-container-1 {
           left: 8%;
