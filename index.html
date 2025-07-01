@@ -3,8 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zumgo - Coming Soon</title>
+    <title>Zumgo</title>
     <style>
+      /* Cargar fuentes desde archivo local */
+      @font-face {
+        font-family: "Emilia Note";
+        src: url("./fonts/EmiliaNote.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Coolvetica";
+        src: url("./fonts/Coolvetica.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "HelveticaNeue";
+        src: url("./fonts/HelveticaNeue-Condensed.ttf") format("ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -12,358 +34,282 @@
       }
 
       body {
-        font-family: "Arial", sans-serif;
-        background: linear-gradient(
-          135deg,
-          #1a5f3f 0%,
-          #2d8f5f 50%,
-          #1a5f3f 100%
-        );
+        font-family: "HelveticaNeue", "Roboto Condensed", sans-serif;
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         position: relative;
-        overflow-x: hidden;
-      }
-
-      /* Efectos de fondo */
-      body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 165, 0, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(255, 165, 0, 0.08) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 60% 20%,
-            rgba(255, 165, 0, 0.06) 0%,
-            transparent 50%
-          );
-        z-index: 1;
+        overflow: hidden;
+        background-image: url("./images/zumgo-comingsoon-background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
       }
 
       .container {
         position: relative;
-        z-index: 2;
-        text-align: center;
-        max-width: 800px;
-        padding: 2rem;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
+      /* Header */
       .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 3rem;
-        position: absolute;
-        top: 2rem;
-        left: 2rem;
-        right: 2rem;
+        padding: 40px 60px;
+        position: relative;
+        z-index: 10;
       }
 
-      .social {
+      .social-handle {
         color: white;
-        font-size: 0.9rem;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 700;
       }
 
       .year {
         color: white;
-        font-size: 1.5rem;
-        font-weight: bold;
+        font-size: 32px;
+        font-weight: 700;
       }
 
-      .brand {
-        color: #ff9500;
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 2rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
-
-      .tagline {
+      /* Main content area */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 60px;
         position: relative;
-        margin-bottom: 1rem;
+        z-index: 10;
       }
 
-      .highlight {
-        display: inline-block;
-        border: 2px solid #ff9500;
-        border-radius: 50px;
-        padding: 0.5rem 1.5rem;
-        color: white;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        transform: rotate(-2deg);
+      /* Logo */
+      .logo {
+        width: auto;
+        height: 80px; /* Ajusta según tu logo */
+        margin-bottom: 80px;
       }
 
+      /* Main text */
       .main-text {
         color: white;
-        font-size: 3.5rem;
-        font-weight: bold;
-        line-height: 1.1;
-        margin-bottom: 1rem;
+        font-family: "Coolvetica";
+        font-weight: 500;
+        font-size: 70px;
+        margin-bottom: 20px;
+        max-width: 700px;
+        line-height: 1;
       }
 
+      /* Subtitle */
       .subtitle {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+        color: white;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 60px;
+      }
+
+      /* Curved texts usando Emilia Note */
+      .curved-text-container {
+        position: absolute;
+      }
+
+      .curved-text-arrow {
+        width: auto;
       }
 
       .curved-text {
-        color: #ff9500;
-        font-style: italic;
-        font-size: 1rem;
-        position: relative;
-        margin-bottom: 3rem;
+        color: #eaa021;
+        font-family: "Emilia Note", cursive;
+        font-size: 24px;
       }
 
-      .curved-text::before {
-        content: "→";
+      .curved-text-container-1 {
+        top: 40%;
+        left: 15%;
+      }
+
+      .curved-text-container-2 {
+        top: 37%;
+        right: 15%;
+        display: flex;
+        gap: 10px;
+      }
+
+      .curved-text-container-3 {
+        bottom: 15%;
+        left: 5%;
+        width: 44%;
+      }
+
+      .curved-text-1 {
         position: absolute;
-        left: -2rem;
-        top: 50%;
-        transform: translateY(-50%) rotate(-20deg);
-        color: #ff9500;
-        font-size: 1.5rem;
+        left: 50px;
+        bottom: 30%;
       }
 
+      .curved-text-3 {
+        position: absolute;
+        left: 55%;
+        bottom: 12%;
+      }
+
+      /* Footer */
       .footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: absolute;
-        bottom: 2rem;
-        left: 2rem;
-        right: 2rem;
+        padding: 40px 60px;
+        position: relative;
+        z-index: 10;
       }
 
       .footer-text {
         color: white;
-        font-size: 0.9rem;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 700;
       }
 
-      .countdown {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        backdrop-filter: blur(10px);
+      /* Responsive */
+      @media (max-width: 1240px) {
+        .curved-text-container-1 {
+          left: 8%;
+        }
+
+        .curved-text-container-2 {
+          right: 9%;
+        }
       }
 
-      .countdown-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        max-width: 400px;
-        margin: 0 auto;
-      }
+      @media (max-width: 1050px) {
+        .curved-text-container-1 {
+          top: 32%;
+        }
 
-      .countdown-item {
-        text-align: center;
-      }
+        .curved-text-container-2 {
+          right: 5%;
+        }
 
-      .countdown-number {
-        display: block;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #ff9500;
-      }
-
-      .countdown-label {
-        display: block;
-        font-size: 0.8rem;
-        color: white;
-        text-transform: uppercase;
-      }
-
-      .notify-form {
-        margin-top: 2rem;
-      }
-
-      .email-input {
-        display: flex;
-        gap: 0.5rem;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .email-input input {
-        flex: 1;
-        padding: 0.8rem;
-        border: none;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 0.9);
-        outline: none;
-      }
-
-      .email-input button {
-        padding: 0.8rem 1.5rem;
-        border: none;
-        border-radius: 25px;
-        background: #ff9500;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
-
-      .email-input button:hover {
-        background: #e6850e;
+        .curved-text-container-3 {
+          left: 0;
+          bottom: 13%;
+          width: 60%;
+        }
       }
 
       @media (max-width: 768px) {
         .header,
         .footer {
-          position: relative;
-          margin: 1rem 0;
+          padding: 20px 30px;
+        }
+
+        .main-content {
+          padding: 0 30px;
+          justify-content: flex-start;
+        }
+
+        .year {
+          font-size: 24px;
+        }
+
+        .logo {
+          height: 40px;
+          margin: 80px 0 170px;
         }
 
         .main-text {
-          font-size: 2.5rem;
+          font-size: 36px;
         }
 
-        .brand {
-          font-size: 2rem;
+        .subtitle {
+          font-size: 16px;
         }
 
-        .email-input {
-          flex-direction: column;
+        .curved-text {
+          font-size: 18px;
         }
 
-        .countdown-grid {
-          grid-template-columns: repeat(2, 1fr);
+        .curved-text-arrow {
+          width: 95px;
+        }
+
+        .curved-text-arrow-1 {
+          width: 150px;
+        }
+
+        .curved-text-1 {
+          left: 14%;
+        }
+
+        .curved-text-3 {
+          bottom: 0;
+        }
+
+        .curved-text-container-1 {
+          left: 4%;
+          top: 30%;
+        }
+
+        .curved-text-container-2 {
+          top: 33%;
+        }
+
+        .curved-text-container-3 {
+          bottom: 36%;
+          width: 46%;
+        }
+
+        .social-handle,
+        .footer-text {
+          font-size: 14px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="header">
-      <div class="social">@ZUMGOJUICE</div>
-      <div class="year">2025</div>
-    </div>
-
     <div class="container">
-      <div class="brand">ZUMGO</div>
+      <!-- Header -->
+      <header class="header">
+        <div class="social-handle">@ZUMGOJUICE</div>
+        <div class="year">2025</div>
+      </header>
 
-      <div class="tagline">
-        <div class="highlight">Pronto en el mercado</div>
-      </div>
+      <!-- Main content -->
+      <main class="main-content">
+        <img src="./images/zumgo-logo.png" alt="Zumgo" class="logo" />
 
-      <h1 class="main-text">¡Experimentando algo grande para ti!</h1>
+        <h2 class="main-text">¡Exprimiendo algo grande para ti!</h2>
 
-      <p class="subtitle">
-        Estamos trabajando en algo increíble. Regístrate para ser el primero en
-        saberlo.
-      </p>
+        <p class="subtitle">Spoiler: vas a querer uno cada día.</p>
 
-      <div class="curved-text">Lo natural al instante</div>
-
-      <div class="countdown">
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <span class="countdown-number" id="days">--</span>
-            <span class="countdown-label">Días</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="hours">--</span>
-            <span class="countdown-label">Horas</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="minutes">--</span>
-            <span class="countdown-label">Minutos</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="seconds">--</span>
-            <span class="countdown-label">Segundos</span>
-          </div>
+        <!-- Curved texts -->
+        <div class="curved-text-container curved-text-container-1">
+          <img
+            src="./images/arrow-1.png"
+            alt=""
+            class="curved-text-arrow curved-text-arrow-1"
+          />
+          <span class="curved-text curved-text-1">Salud al instante</span>
         </div>
-      </div>
-
-      <div class="notify-form">
-        <div class="email-input">
-          <input type="email" placeholder="Tu email aquí..." id="emailInput" />
-          <button onclick="notifyMe()">Notifícame</button>
+        <div class="curved-text-container curved-text-container-2">
+          <img src="./images/arrow-2.png" alt="" class="curved-text-arrow" />
+          <span class="curved-text">Exprime tu día</span>
         </div>
-      </div>
+        <div class="curved-text-container curved-text-container-3">
+          <img src="./images/arrow-3.png" alt="" class="curved-text-arrow" />
+          <span class="curved-text curved-text-3">Lo natural al momento</span>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-text">100% NARANJA</div>
+        <div class="footer-text">100% NATURAL</div>
+      </footer>
     </div>
-
-    <div class="footer">
-      <div class="footer-text">100% NARANJA</div>
-      <div class="footer-text">100% NATURAL</div>
-    </div>
-
-    <script>
-      // Countdown timer (ejemplo: lanzamiento en 30 días)
-      const launchDate = new Date();
-      launchDate.setDate(launchDate.getDate() + 30);
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = launchDate.getTime() - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").textContent = days
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("hours").textContent = hours
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("minutes").textContent = minutes
-          .toString()
-          .padStart(2, "0");
-        document.getElementById("seconds").textContent = seconds
-          .toString()
-          .padStart(2, "0");
-
-        if (distance < 0) {
-          document.querySelector(".countdown").innerHTML =
-            '<h2 style="color: #ff9500;">¡Ya estamos aquí!</h2>';
-        }
-      }
-
-      // Actualizar countdown cada segundo
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      // Función para manejar el formulario de notificación
-      function notifyMe() {
-        const email = document.getElementById("emailInput").value;
-        if (email && email.includes("@")) {
-          alert("¡Gracias! Te notificaremos cuando estemos listos.");
-          document.getElementById("emailInput").value = "";
-        } else {
-          alert("Por favor, introduce un email válido.");
-        }
-      }
-
-      // Permitir envío con Enter
-      document
-        .getElementById("emailInput")
-        .addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            notifyMe();
-          }
-        });
-    </script>
   </body>
 </html>
