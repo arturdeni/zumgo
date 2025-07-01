@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Theme color para Safari y otros navegadores -->
+    <meta name="theme-color" content="#1a4332" />
+    <!-- Color de fondo mientras carga la página -->
+    <meta name="msapplication-navbutton-color" content="#1a4332" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Zumgo</title>
     <style>
@@ -36,7 +40,7 @@
 
       body {
         font-family: "HelveticaNeue", "Roboto Condensed", sans-serif;
-        min-height: 100vh;
+        min-height: 100dvh;
         position: relative;
         overflow: hidden;
         background-image: url("./images/zumgo-comingsoon-background.png");
@@ -48,7 +52,7 @@
       .container {
         position: relative;
         width: 100%;
-        height: 100vh;
+        height: 100dvh;
         display: flex;
         flex-direction: column;
       }
@@ -281,6 +285,12 @@
         .social-handle,
         .footer-text {
           font-size: 14px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .logo {
+          margin: 80px;
         }
       }
     </style>
