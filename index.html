@@ -40,6 +40,7 @@
 
       body {
         font-family: "HelveticaNeue", "Roboto Condensed", sans-serif;
+        font-size: 30px;
         min-height: 100dvh;
         position: relative;
         overflow: hidden;
@@ -64,19 +65,9 @@
         align-items: center;
         padding: 40px 60px;
         position: relative;
+        font-weight: 700;
+        color: white;
         z-index: 10;
-      }
-
-      .social-handle {
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-      }
-
-      .year {
-        color: white;
-        font-size: 32px;
-        font-weight: 700;
       }
 
       /* Main content area */
@@ -95,8 +86,9 @@
       /* Logo */
       .logo {
         width: auto;
-        height: 80px; /* Ajusta según tu logo */
-        margin-bottom: 80px;
+        height: 57px;
+        position: absolute;
+        top: -70px;
       }
 
       /* Main text */
@@ -105,6 +97,7 @@
         font-family: "Coolvetica";
         font-weight: 500;
         font-size: 70px;
+        margin-top: 160px;
         margin-bottom: 20px;
         max-width: 700px;
         line-height: 1;
@@ -113,8 +106,7 @@
       /* Subtitle */
       .subtitle {
         color: white;
-        font-size: 18px;
-        font-weight: 400;
+        font-size: 24px;
         margin-bottom: 60px;
       }
 
@@ -147,7 +139,7 @@
 
       .curved-text-container-3 {
         bottom: 15%;
-        left: 5%;
+        left: 9%;
         width: 44%;
       }
 
@@ -175,7 +167,6 @@
 
       .footer-text {
         color: white;
-        font-size: 16px;
         font-weight: 700;
       }
 
@@ -190,7 +181,7 @@
         }
 
         .curved-text-container-3 {
-          width: 65%;
+          width: 52%;
         }
       }
 
@@ -205,6 +196,10 @@
       }
 
       @media (max-width: 1050px) {
+        body {
+          font-size: 24px;
+        }
+
         .curved-text-container-1 {
           top: 32%;
         }
@@ -221,6 +216,10 @@
       }
 
       @media (max-width: 640px) {
+        body {
+          font-size: 16px;
+        }
+
         .header,
         .footer {
           padding: 20px 30px;
@@ -231,16 +230,15 @@
           justify-content: flex-start;
         }
 
-        .year {
-          font-size: 24px;
-        }
-
         .logo {
+          position: relative;
+          top: 0;
           height: 40px;
-          margin: 80px 0 170px;
+          margin: 80px 0 180px;
         }
 
         .main-text {
+          margin-top: 15px;
           font-size: 36px;
         }
 
@@ -281,14 +279,9 @@
           bottom: 36%;
           width: 46%;
         }
-
-        .social-handle,
-        .footer-text {
-          font-size: 14px;
-        }
       }
 
-      @media (max-width: 400px) {
+      @media (max-width: 450px) {
         .logo {
           margin: 80px 0 90px;
         }
