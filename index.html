@@ -40,14 +40,35 @@
 
       body {
         font-family: "HelveticaNeue", "Roboto Condensed", sans-serif;
-        font-size: 30px;
+        font-size: 26px;
         min-height: 100dvh;
         position: relative;
         overflow: hidden;
+        background-color: #1a4332; /* Color de respaldo */
+      }
+
+      /* Contenedor del parallax */
+      #parallax-scene {
+        position: fixed;
+        top: -30px;
+        left: -30px;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      /* Capa de fondo con parallax */
+      .parallax-background {
+        position: absolute;
+        top: -30%;
+        left: -30%;
+        width: 140%;
+        height: 140%;
         background-image: url("./images/zumgo-comingsoon-background.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        will-change: transform;
       }
 
       .container {
@@ -56,6 +77,7 @@
         height: 100dvh;
         display: flex;
         flex-direction: column;
+        z-index: 2;
       }
 
       /* Header */
@@ -86,7 +108,7 @@
       /* Logo */
       .logo {
         width: auto;
-        height: 57px;
+        height: 32px;
         position: absolute;
         top: -70px;
       }
@@ -197,7 +219,7 @@
 
       @media (max-width: 1050px) {
         body {
-          font-size: 24px;
+          font-size: 19px;
         }
 
         .curved-text-container-1 {
@@ -293,6 +315,11 @@
     </style>
   </head>
   <body>
+    <!-- Contenedor del parallax para la imagen de fondo -->
+    <div id="parallax-scene">
+      <div class="parallax-background" data-depth="1.5"></div>
+    </div>
+
     <div class="container">
       <!-- Header -->
       <header class="header">
@@ -333,5 +360,90 @@
         <div class="footer-text">100% NATURAL</div>
       </footer>
     </div>
+
+    <!-- Parallax.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+
+    <script>
+      // Función para inicializar parallax con soporte para gyroscopio en iOS
+      function initParallax() {
+        const scene = document.getElementById("parallax-scene");
+
+        // Configuración del parallax
+        const parallaxInstance = new Parallax(scene, {
+          // Movimiento suave y sutil
+          scalarX: 8.0,
+          scalarY: 8.0,
+          // Fricción para movimiento suave
+          frictionX: 0.05,
+          frictionY: 0.05,
+          // Usar entrada relativa para mejor control
+          relativeInput: true,
+          // Calibrar el eje Y para móviles
+          calibrateY: true,
+          calibrateX: false,
+          // Invertir para movimiento natural
+          invertX: true,
+          invertY: true,
+          // Limitar el movimiento para que sea sutil
+          limitX: 15,
+          limitY: 15,
+        });
+
+        console.log("Parallax inicializado correctamente");
+      }
+
+      // Función para solicitar permisos de orientación en iOS
+      function requestOrientationPermission() {
+        if (
+          typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+          DeviceOrientationEvent.requestPermission()
+            .then((response) => {
+              if (response === "granted") {
+                console.log("Permisos de orientación concedidos");
+                initParallax();
+              } else {
+                console.log("Permisos de orientación denegados, usando cursor");
+                initParallax();
+              }
+            })
+            .catch(console.error);
+        } else {
+          // No es iOS o no necesita permisos
+          initParallax();
+        }
+      }
+
+      // Detectar si es un dispositivo móvil
+      function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+      }
+
+      // Inicialización cuando el DOM esté listo
+      document.addEventListener("DOMContentLoaded", function () {
+        if (
+          isMobileDevice() &&
+          typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+          // En iOS, solicitar permisos cuando el usuario interactúe
+          document.addEventListener(
+            "touchstart",
+            function onFirstTouch() {
+              requestOrientationPermission();
+              document.removeEventListener("touchstart", onFirstTouch);
+            },
+            { once: true }
+          );
+        } else {
+          // Inicializar directamente en otros casos
+          requestOrientationPermission();
+        }
+      });
+    </script>
   </body>
 </html>
