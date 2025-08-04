@@ -14,8 +14,8 @@
 
 /* HTML y Body */
 html {
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-base);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: 16px; /* Base para cálculos rem */
   line-height: 1.6;
   scroll-behavior: smooth;
 }
@@ -25,6 +25,9 @@ body {
   background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Ancho máximo fijo para toda la web */
+  max-width: var(--site-max-width);
+  margin: 0 auto;
 }
 
 /* Contenedor principal */
@@ -34,43 +37,65 @@ body {
   padding: 0 var(--container-padding);
 }
 
-/* Tipografía base */
+/* Tipografía base con fuentes y tamaños específicos */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+  font-weight: normal;
   margin-bottom: var(--space-4);
 }
 
 h1 {
-  font-size: var(--font-size-h1);
+  font-family: var(--font-family-coolvetica);
+  font-size: var(--font-size-h1-rem);
+  line-height: calc(110 / 120); /* 110/120 ratio */
 }
+
 h2 {
-  font-size: var(--font-size-h2);
+  font-family: var(--font-family-coolvetica);
+  font-size: var(--font-size-h2-rem);
+  line-height: calc(76 / 80); /* 76/80 ratio */
 }
+
 h3 {
-  font-size: var(--font-size-h3);
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-h3-rem);
+  line-height: calc(25 / 20); /* 25/20 ratio */
 }
+
 h4 {
-  font-size: var(--font-size-h4);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-h4-rem);
+  line-height: calc(22 / 20); /* 22/20 ratio */
 }
+
 h5 {
-  font-size: var(--font-size-h5);
+  font-family: var(--font-family-emilia);
+  font-size: var(--font-size-h5-rem);
+  line-height: calc(31 / 30); /* 31/30 ratio */
 }
 
 p {
-  font-size: var(--font-size-paragraph);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-paragraph-rem);
+  line-height: calc(21 / 20); /* 21/20 ratio */
   margin-bottom: var(--space-4);
-  line-height: 1.7;
 }
 
-/* Texto de menú */
+/* Clases específicas para textos especiales */
+.text-special {
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-text1-rem);
+  line-height: calc(24 / 25); /* 24/25 ratio */
+}
+
 .menu-text {
-  font-size: var(--font-size-menu);
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-menu-rem);
+  line-height: 1; /* 20/20 ratio */
 }
 
 /* Enlaces */
@@ -136,22 +161,16 @@ select:focus {
     padding: 0 var(--space-4);
   }
 
-  /* Escala tipográfica responsive */
+  /* Escala tipográfica responsive (reducir tamaños grandes) */
   h1 {
-    font-size: var(--font-size-4xl);
+    font-size: 4rem; /* Reducir H1 para móvil */
+    line-height: calc(110 / 120);
   }
   h2 {
-    font-size: var(--font-size-3xl);
+    font-size: 3rem; /* Reducir H2 para móvil */
+    line-height: calc(76 / 80);
   }
-  h3 {
-    font-size: var(--font-size-2xl);
-  }
-  h4 {
-    font-size: var(--font-size-xl);
-  }
-  h5 {
-    font-size: var(--font-size-lg);
-  }
+  /* H3, H4, H5 mantienen su tamaño por ser más pequeños */
 }
 
 /* Clases utilitarias comunes */

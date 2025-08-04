@@ -22,29 +22,47 @@
   --color-gray-900: #212529;
 
   /* === TIPOGRAFÍA === */
-  --font-family-primary: 'Your-Primary-Font', system-ui, sans-serif;
-  --font-family-secondary: 'Your-Secondary-Font', system-ui, sans-serif;
+  --font-family-coolvetica: 'Coolvetica-Rg', 'Arial Black', sans-serif;
+  --font-family-emilia: 'EmiliaNote', 'Brush Script MT', cursive;
+  --font-family-helvetica-condensed:
+    'HelveticaNeue-bold-condensed', 'Arial Narrow', sans-serif;
+  --font-family-helvetica-regular:
+    'HelveticaNeue-regular', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Tamaños de fuente específicos */
-  --font-size-h1: 3.75rem; /* 60px - Header principal */
-  --font-size-h2: 3rem; /* 48px - Header secundario */
-  --font-size-h3: 2.25rem; /* 36px - Header terciario */
-  --font-size-h4: 1.875rem; /* 30px - Header cuarto */
-  --font-size-h5: 1.5rem; /* 24px - Header quinto */
-  --font-size-paragraph: 1rem; /* 16px - Texto de párrafo */
-  --font-size-menu: 0.875rem; /* 14px - Texto de menú */
+  /* Tamaños de fuente específicos con line-height */
+  --font-size-h1: 120px;
+  --line-height-h1: 110px;
 
-  /* Tamaños adicionales (para utilidades) */
-  --font-size-xs: 0.75rem; /* 12px */
-  --font-size-sm: 0.875rem; /* 14px */
-  --font-size-base: 1rem; /* 16px */
-  --font-size-lg: 1.125rem; /* 18px */
-  --font-size-xl: 1.25rem; /* 20px */
-  --font-size-2xl: 1.5rem; /* 24px */
-  --font-size-3xl: 1.875rem; /* 30px */
-  --font-size-4xl: 2.25rem; /* 36px */
-  --font-size-5xl: 3rem; /* 48px */
-  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-h2: 80px;
+  --line-height-h2: 76px;
+
+  --font-size-h3: 20px;
+  --line-height-h3: 25px;
+
+  --font-size-h4: 20px;
+  --line-height-h4: 22px;
+
+  --font-size-h5: 30px;
+  --line-height-h5: 31px;
+
+  --font-size-paragraph: 20px;
+  --line-height-paragraph: 21px;
+
+  --font-size-text1: 25px;
+  --line-height-text1: 24px;
+
+  --font-size-menu: 20px;
+  --line-height-menu: 20px;
+
+  /* Tamaños adicionales en rem (para responsive) */
+  --font-size-h1-rem: 7.5rem; /* 120px */
+  --font-size-h2-rem: 5rem; /* 80px */
+  --font-size-h3-rem: 1.25rem; /* 20px */
+  --font-size-h4-rem: 1.25rem; /* 20px */
+  --font-size-h5-rem: 1.875rem; /* 30px */
+  --font-size-paragraph-rem: 1.25rem; /* 20px */
+  --font-size-text1-rem: 1.5625rem; /* 25px */
+  --font-size-menu-rem: 1.25rem; /* 20px */
 
   /* Pesos de fuente */
   --font-weight-light: 300;
@@ -70,7 +88,8 @@
   --space-32: 8rem; /* 128px */
 
   /* === LAYOUT === */
-  --container-max-width: 1200px;
+  --site-max-width: 1400px; /* Ancho máximo de toda la web */
+  --container-max-width: 1200px; /* Contenido interno */
   --container-padding: var(--space-6);
 
   /* === BREAKPOINTS (para referencia) === */

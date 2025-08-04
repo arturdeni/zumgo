@@ -1,33 +1,70 @@
 ---
-// index.astro - Página principal de Zumgo
+// index.astro - Página de prueba del sistema de diseño
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Zumgo - Home" description="Bienvenido a Zumgo, tu nueva web">
+<Layout
+  title="Zumgo - Test de Diseño"
+  description="Prueba del sistema de fuentes y estilos"
+>
   <main>
     <div class="container">
-      <section class="hero">
-        <h1>¡Bienvenido a Zumgo!</h1>
+      <!-- Test de Headers -->
+      <section class="typography-test">
+        <h1>Header 1 - Coolvetica</h1>
+        <h2>Header 2 - Coolvetica</h2>
+        <h3>Header 3 - Helvetica Condensed</h3>
+        <h4>Header 4 - Helvetica Regular</h4>
+        <h5>Header 5 - Emilia Notes</h5>
+
         <p>
-          Tu proyecto Astro está configurado y listo para empezar a desarrollar.
+          Este es un párrafo con Helvetica Regular. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua.
         </p>
-        <div class="status-grid">
-          <div class="status-item">
-            <h3>✅ Astro</h3>
-            <p>Configurado correctamente</p>
+
+        <p class="text-special">
+          Este es el texto especial "Text1" con Helvetica Regular 25px/24px para
+          casos muy particulares.
+        </p>
+
+        <div class="menu-text">Texto de menú - Helvetica Condensed</div>
+      </section>
+
+      <!-- Test de Colores -->
+      <section class="color-test">
+        <h3>Paleta de Colores Zumgo</h3>
+        <div class="color-grid">
+          <div class="color-item yellow">
+            <span>Yellow</span>
           </div>
-          <div class="status-item">
-            <h3>🎨 Estilos</h3>
-            <p>Sistema de diseño preparado</p>
+          <div class="color-item mint">
+            <span>Mint</span>
           </div>
-          <div class="status-item">
-            <h3>📁 Estructura</h3>
-            <p>Carpetas organizadas</p>
+          <div class="color-item orange">
+            <span>Orange</span>
           </div>
-          <div class="status-item">
-            <h3>🚀 Siguiente</h3>
-            <p>Crear componentes</p>
+          <div class="color-item forest">
+            <span>Forest</span>
           </div>
+          <div class="color-item cream">
+            <span>Cream</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Test de Layout -->
+      <section class="layout-test">
+        <h3>Test de Ancho Máximo</h3>
+        <p>
+          Esta página tiene un ancho máximo de 1400px y está centrada. En
+          pantallas grandes, verás espacios vacíos a los lados.
+        </p>
+        <div class="content-box">
+          <p>
+            Este contenedor respeta el max-width de 1200px para el contenido
+            interno.
+          </p>
         </div>
       </section>
     </div>
@@ -35,50 +72,89 @@ import Layout from '../layouts/Layout.astro'
 </Layout>
 
 <style>
-  .hero {
-    padding: var(--space-20) 0;
-    text-align: center;
+  .typography-test {
+    padding: var(--space-16) 0;
+    border-bottom: 2px solid var(--color-gray-200);
+    margin-bottom: var(--space-16);
   }
 
-  .hero h1 {
-    color: var(--color-forest);
-    margin-bottom: var(--space-6);
+  .color-test {
+    padding: var(--space-16) 0;
+    border-bottom: 2px solid var(--color-gray-200);
+    margin-bottom: var(--space-16);
   }
 
-  .hero p {
-    font-size: var(--font-size-lg);
-    color: var(--color-gray-600);
-    margin-bottom: var(--space-12);
-  }
-
-  .status-grid {
+  .color-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-6);
-    margin-top: var(--space-12);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-6);
   }
 
-  .status-item {
-    padding: var(--space-6);
-    border: 1px solid var(--color-gray-200);
+  .color-item {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--radius-lg);
-    transition:
-      transform var(--transition-base),
-      box-shadow var(--transition-base);
+    transition: transform var(--transition-base);
   }
 
-  .status-item:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  .color-item:hover {
+    transform: scale(1.05);
   }
 
-  .status-item h3 {
-    margin-bottom: var(--space-3);
-    font-size: var(--font-size-xl);
+  .color-item span {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
 
-  .status-item p {
-    margin-bottom: 0;
-    color: var(--color-gray-600);
+  .yellow {
+    background-color: var(--color-yellow);
+  }
+  .mint {
+    background-color: var(--color-mint);
+  }
+  .orange {
+    background-color: var(--color-orange);
+  }
+  .forest {
+    background-color: var(--color-forest);
+  }
+  .cream {
+    background-color: var(--color-cream);
+  }
+  .cream span {
+    color: var(--color-forest);
+    text-shadow: none;
+  }
+
+  .layout-test {
+    padding: var(--space-16) 0;
+  }
+
+  .content-box {
+    background: linear-gradient(135deg, var(--color-mint), var(--color-yellow));
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    margin-top: var(--space-6);
+    color: var(--color-white);
+  }
+
+  .content-box p {
+    margin: 0;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* Test responsive */
+  @media (max-width: 767px) {
+    .color-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .color-item {
+      height: 80px;
+    }
   }
 </style>

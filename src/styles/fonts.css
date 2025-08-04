@@ -1,0 +1,34 @@
+/* ===== FUENTES ZUMGO ===== */
+
+@font-face {
+  font-family: 'Coolvetica-Rg';
+  src: url('../../public/fonts/Coolvetica-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EmiliaNote';
+  src: url('../../public/fonts/EmiliaNote.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue-bold-condensed';
+  src: url('../../public/fonts/HelveticaNeue-bold-condensed.woff2')
+    format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue-regular';
+  src: url('../../public/fonts/HelveticaNeue-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
