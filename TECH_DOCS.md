@@ -5,7 +5,7 @@
 **Nombre:** Zumgo  
 **Tipo:** Sitio web estático informativo (SPA)  
 **Propósito:** Sitio informativo con imágenes y animaciones  
-**Estado:** En desarrollo inicial
+**Estado:** Configuración base completada - Listo para componentes
 
 ## 🛠️ Stack Técnico
 
@@ -18,42 +18,39 @@
 ### Estilado y Diseño
 
 - **CSS vanilla** - Sin frameworks CSS
-- **Sistema de variables CSS** personalizado
+- **Sistema de variables CSS** personalizado integrado en Layout
 - **Diseño responsive** (móvil y desktop igual de importantes)
+- **Ancho máximo fijo:** 1400px para toda la web
 
 ### Animaciones y Interactividad
 
-- **GSAP** - Librería principal para animaciones
+- **GSAP** - Librería principal para animaciones (instalada)
 - **CSS Animations** - Para animaciones simples
 - **Iconografía propia** - Sin librerías de iconos externas
 
 ### Funcionalidades Dinámicas
 
-- **Formulario de contacto** - Única funcionalidad dinámica (envío por email)
+- **Formulario de contacto** - Única funcionalidad dinámica (pendiente)
 - **Contenido estático** - No CMS, no rutas dinámicas, no datos externos
 
 ## 📁 Estructura del Proyecto
 
 ```
 src/
-├── components/              # Componentes reutilizables
-│   ├── Header/
-│   │   ├── Header.astro
-│   │   └── Header.css
-│   ├── Footer/
-│   ├── Button/
-│   └── Hero/
-├── layouts/                 # Layouts de página
-│   └── Layout.astro        # Layout principal con SEO
-├── pages/                   # Páginas del sitio
-│   └── index.astro         # Página principal
-├── assets/                  # Recursos estáticos
-│   ├── images/
-│   └── icons/
-├── styles/                  # Estilos globales
-│   ├── variables.css       # Variables de diseño
-│   └── global.css          # Estilos globales
-└── utils/                   # Utilidades y helpers
+├── components/              # Componentes reutilizables (pendientes)
+├── layouts/
+│   └── Layout.astro        # Layout principal con TODO integrado
+├── pages/
+│   └── index.astro         # Página de prueba del sistema
+└── utils/                   # Utilidades y helpers (vacía)
+
+public/
+├── fonts/                   # ✅ Fuentes personalizadas funcionando
+│   ├── Coolvetica-Rg.woff2
+│   ├── EmiliaNote.woff2
+│   ├── HelveticaNeue-bold-condensed.woff2
+│   └── HelveticaNeue-regular.woff2
+└── favicon.svg
 ```
 
 ## 🎨 Sistema de Diseño
@@ -72,20 +69,21 @@ src/
 ### Tipografía
 
 ```css
-/* Tamaños específicos */
---font-size-h1: 3.75rem /* 60px - Header principal */ --font-size-h2: 3rem
-  /* 48px - Header secundario */ --font-size-h3: 2.25rem
-  /* 36px - Header terciario */ --font-size-h4: 1.875rem
-  /* 30px - Header cuarto */ --font-size-h5: 1.5rem /* 24px - Header quinto */
-  --font-size-paragraph: 1rem /* 16px - Texto de párrafo */
-  --font-size-menu: 0.875rem /* 14px - Texto de menú */;
+/* Fuentes asignadas por el diseñador UX/UI */
+H1, H2: Coolvetica-Rg (120px/110px y 80px/76px)
+H3: HelveticaNeue-bold-condensed (20px/25px)
+H4, Párrafos: HelveticaNeue-regular (20px/22px y 20px/21px)
+H5: EmiliaNote (30px/31px)
+Text1: .text-special (25px/24px) - Para casos muy específicos
+Menú: .menu-text (20px/20px)
 ```
 
-### Espaciado
+### Layout
 
-- Sistema basado en múltiplos de 4px
-- Variables desde `--space-1` (4px) hasta `--space-32` (128px)
-- Container máximo: 1200px
+- **Ancho máximo del sitio:** 1400px (toda la web centrada)
+- **Contenedor de contenido:** 1200px máximo
+- **Sistema de espaciado:** Múltiplos de 4px
+- **Responsive:** Mobile-first, H1/H2 se reducen en móvil
 
 ### Breakpoints
 
@@ -99,7 +97,7 @@ src/
 ### Herramientas de Código
 
 - **Prettier** configurado para archivos .astro
-- **Plugin:** `prettier-plugin-astro`
+- **Plugin:** `prettier-plugin-astro` instalado
 - **VSCode Extensions:** Astro oficial + Prettier
 
 ### Scripts Disponibles
@@ -137,32 +135,33 @@ npm run preview  # Preview del build
 
 ### Configuración Git
 
-- Repositorio ya conectado a Vercel
+- Repositorio conectado a Vercel
 - Auto-deploy desde ramas configuradas
 - Workflow: develop → master
 
 ## 📝 Convenciones y Patrones
 
-### Estructura de Componentes
+### Arquitectura CSS
+
+- **TODO integrado en Layout.astro** con `<style is:global>`
+- **@font-face** definidos directamente en Layout
+- **Variables CSS** centralizadas en :root del Layout
+- **Estilos de componente** irán en archivos separados
+
+### Estructura de Componentes (futura)
 
 - Cada componente en su propia carpeta
 - Archivo `.astro` + archivo `.css` correspondiente
 - Naming convention: PascalCase para carpetas y archivos
 
-### Estilos
-
-- Variables CSS centralizadas en `variables.css`
-- Estilos globales en `global.css`
-- Estilos de componente en archivos separados
-- Metodología: Componente-específico + utilidades globales
-
 ### Archivos de Configuración
 
-- `.prettierrc` - Configuración de Prettier
-- `astro.config.mjs` - Configuración de Astro
+- `.prettierrc` - Configuración de Prettier con plugin Astro
+- `astro.config.mjs` - Configuración básica de Astro
 - `package.json` - Dependencias y scripts
+- `TECH_DOCS.md` - Este documento (contexto para Claude)
 
-## 🎯 Próximos Pasos Planificados
+## 🎯 Próximos Pasos Inmediatos
 
 ### Componentes a Crear
 
@@ -170,12 +169,11 @@ npm run preview  # Preview del build
 2. **Footer** - Pie de página
 3. **Button** - Componente de botón reutilizable
 4. **Hero** - Sección hero de la home
-5. **Formulario de Contacto** - Con envío por email
 
 ### Integraciones Futuras
 
-- Posible integración con **React** para componentes específicos
 - Configuración del formulario de contacto (Formspree, EmailJS, etc.)
+- Posible integración con **React** para componentes específicos
 - Optimización de imágenes con Astro
 
 ## 📚 Recursos de Referencia
@@ -187,18 +185,28 @@ npm run preview  # Preview del build
 
 ### Diseño
 
-- **Figma:** Diseño completo disponible
-- **Assets:** Iconografía propia pendiente de integrar
+- **Figma:** Diseño completo disponible con sistema de diseño
+- **Assets:** Fuentes personalizadas ya integradas
 
 ## 🔍 Notas Importantes
 
-1. **Sin TypeScript:** El proyecto está configurado específicamente para JavaScript
-2. **Componentes Astro:** Usar sintaxis nativa de Astro, evitar frameworks a menos que sea necesario
-3. **GSAP:** Recordar manejar correctamente la hidratación en componentes con animaciones
-4. **SEO:** Layout ya configurado con meta tags básicos
-5. **Responsive:** Diseño mobile-first, ambas versiones igual de importantes
+1. **Sin TypeScript:** Proyecto configurado específicamente para JavaScript
+2. **Fuentes funcionando:** Todas las fuentes personalizadas cargando correctamente desde `/fonts/`
+3. **Layout centralizado:** Todo el CSS base está en Layout.astro con `is:global`
+4. **Ancho fijo:** Web limitada a 1400px, centrada en pantallas grandes
+5. **GSAP listo:** Instalado y disponible para animaciones
+6. **Sistema probado:** Página de prueba funcionando con todos los estilos
+
+## ✅ Estado Actual
+
+- ✅ **Configuración base** completada
+- ✅ **Sistema de fuentes** funcionando
+- ✅ **Paleta de colores** implementada
+- ✅ **Layout responsive** configurado
+- ✅ **Variables CSS** organizadas
+- ✅ **Prettier** configurado para .astro
 
 ---
 
-**Última actualización:** Configuración inicial completada  
-**Próxima milestone:** Creación de componentes base
+**Última actualización:** Sistema de diseño base completado  
+**Próxima milestone:** Creación de componentes base (Header, Button, Hero)
