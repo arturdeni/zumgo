@@ -11,7 +11,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-4) var(--space-8); /* 16px vertical, 32px horizontal */
+  padding: var(--space-3) var(--space-8);
 
   /* Apariencia base */
   border: none;
@@ -25,13 +25,6 @@
   /* Sin selección de texto */
   user-select: none;
   -webkit-user-select: none;
-
-  /* Altura mínima para consistencia */
-  min-height: 56px;
-
-  /* Espaciado horizontal generoso como en las capturas */
-  padding-left: var(--space-10); /* 40px */
-  padding-right: var(--space-10); /* 40px */
 }
 
 /* === VARIANTE NARANJA === */
@@ -60,7 +53,6 @@
 .zumgo-button--forest:hover {
   /* Hover más claro del forest */
   background-color: #0a5235; /* Forest más claro */
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 

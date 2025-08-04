@@ -28,13 +28,6 @@ body {
   margin: 0 auto;
 }
 
-/* Contenedor principal */
-.container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-}
-
 /* Tipografía base con fuentes y tamaños específicos */
 h1,
 h2,
@@ -155,10 +148,6 @@ select:focus {
 
 /* Utilidades responsive */
 @media (max-width: 767px) {
-  .container {
-    padding: 0 var(--space-4);
-  }
-
   /* Escala tipográfica responsive (reducir tamaños grandes) */
   h1 {
     font-size: 4rem; /* Reducir H1 para móvil */

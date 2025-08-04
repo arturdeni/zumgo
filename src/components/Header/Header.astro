@@ -1,0 +1,183 @@
+---
+// Header.astro - Componente de header con navegación
+import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
+
+// Datos de navegación
+const navItems = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Qué es Zumgo', href: '#que-es' },
+  { name: 'Dónde funciona', href: '#donde-funciona' },
+  { name: 'Quiero una máquina', href: '#maquina' },
+]
+---
+
+<header class="header" id="header">
+  <div class="header__container">
+    <!-- Logo -->
+    <div class="header__logo">
+      <a href="#inicio" class="header__logo-link">
+        <img src="/zumgo-logo.svg" alt="Zumgo" class="header__logo-image" />
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav header__nav--desktop">
+      <ul class="header__nav-list">
+        {
+          navItems.map((item) => (
+            <li class="header__nav-item">
+              <a href={item.href} class="header__nav-link">
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Botón Contacto en desktop -->
+      <ZumgoButton variant="forest" href="#contacto" class="header__cta">
+        Contacto
+      </ZumgoButton>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="header__mobile-toggle"
+      id="mobileToggle"
+      type="button"
+      aria-label="Abrir menú"
+    >
+      <span class="header__hamburger"></span>
+      <span class="header__hamburger"></span>
+      <span class="header__hamburger"></span>
+    </button>
+
+    <!-- Mobile Navigation -->
+    <nav class="header__nav header__nav--mobile" id="mobileNav">
+      <ul class="header__nav-list">
+        {
+          navItems.map((item) => (
+            <li class="header__nav-item">
+              <a href={item.href} class="header__nav-link">
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+        <li class="header__nav-item header__nav-item--cta">
+          <ZumgoButton variant="forest" href="#contacto">
+            Contacto
+          </ZumgoButton>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Overlay para mobile -->
+<div class="header__overlay" id="headerOverlay"></div>
+
+<style>
+  @import url('./Header.css');
+</style>
+
+<script>
+  // Script para el menú mobile y scroll header
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('header')
+    const mobileToggle = document.getElementById('mobileToggle')
+    const mobileNav = document.getElementById('mobileNav')
+    const overlay = document.getElementById('headerOverlay')
+
+    let lastScrollY = window.scrollY
+    let isScrollingDown = false
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const isOpen = mobileNav?.classList.contains('is-open')
+
+      if (isOpen) {
+        closeMobileMenu()
+      } else {
+        openMobileMenu()
+      }
+    }
+
+    function openMobileMenu() {
+      mobileNav?.classList.add('is-open')
+      overlay?.classList.add('is-open')
+      mobileToggle?.classList.add('is-open')
+      document.body.classList.add('menu-open')
+    }
+
+    function closeMobileMenu() {
+      mobileNav?.classList.remove('is-open')
+      overlay?.classList.remove('is-open')
+      mobileToggle?.classList.remove('is-open')
+      document.body.classList.remove('menu-open')
+    }
+
+    // Event listeners
+    mobileToggle?.addEventListener('click', toggleMobileMenu)
+    overlay?.addEventListener('click', closeMobileMenu)
+
+    // Cerrar menú al hacer click en un enlace
+    const mobileLinks = mobileNav?.querySelectorAll('a')
+    mobileLinks?.forEach((link) => {
+      link.addEventListener('click', closeMobileMenu)
+    })
+
+    // Header scroll behavior (solo desktop)
+    function handleScroll() {
+      const currentScrollY = window.scrollY
+
+      if (window.innerWidth >= 1024) {
+        // Solo en desktop
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down
+          if (!isScrollingDown) {
+            header?.classList.add('header--hidden')
+            isScrollingDown = true
+          }
+        } else {
+          // Scrolling up
+          if (isScrollingDown) {
+            header?.classList.remove('header--hidden')
+            isScrollingDown = false
+          }
+        }
+      }
+
+      lastScrollY = currentScrollY
+    }
+
+    // Throttle scroll events
+    let ticking = false
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    })
+
+    // Smooth scroll para los enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e: Event) {
+        e.preventDefault()
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href')
+        if (href) {
+          const target = document.querySelector(href)
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          }
+        }
+      })
+    })
+  })
+</script>
