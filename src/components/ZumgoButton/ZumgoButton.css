@@ -1,0 +1,99 @@
+/* ===== ZUMGO BUTTON COMPONENT ===== */
+
+.zumgo-button {
+  /* Tipografía específica según las especificaciones */
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-menu-rem); /* 1.25rem = 20px */
+  line-height: var(--line-height-menu); /* 20px */
+  font-weight: var(--font-weight-bold);
+
+  /* Layout y espaciado */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8); /* 16px vertical, 32px horizontal */
+
+  /* Apariencia base */
+  border: none;
+  border-radius: var(--radius-full); /* Botón redondeado como en las capturas */
+  cursor: pointer;
+  text-decoration: none;
+
+  /* Transiciones suaves */
+  transition: all var(--transition-base);
+
+  /* Sin selección de texto */
+  user-select: none;
+  -webkit-user-select: none;
+
+  /* Altura mínima para consistencia */
+  min-height: 56px;
+
+  /* Espaciado horizontal generoso como en las capturas */
+  padding-left: var(--space-10); /* 40px */
+  padding-right: var(--space-10); /* 40px */
+}
+
+/* === VARIANTE NARANJA === */
+.zumgo-button--yellow {
+  background-color: var(--color-yellow);
+  color: var(--color-forest);
+}
+
+.zumgo-button--yellow:hover {
+  /* Hover más oscuro del naranja */
+  background-color: #ae7d0c; /* Naranja más oscuro */
+  box-shadow: var(--shadow-md);
+}
+
+.zumgo-button--yellow:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === VARIANTE FOREST === */
+.zumgo-button--forest {
+  background-color: var(--color-forest);
+  color: var(--color-yellow);
+}
+
+.zumgo-button--forest:hover {
+  /* Hover más claro del forest */
+  background-color: #0a5235; /* Forest más claro */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.zumgo-button--forest:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === ESTADO DISABLED === */
+.zumgo-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.zumgo-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .zumgo-button {
+    /* Ajustar padding en móvil si es necesario */
+    padding-left: var(--space-8); /* 32px */
+    padding-right: var(--space-8); /* 32px */
+    min-height: 48px; /* Ligeramente más pequeño en móvil */
+  }
+}
+
+/* === FOCUS ACCESSIBILITY === */
+.zumgo-button:focus {
+  outline: 2px solid var(--color-yellow);
+  outline-offset: 2px;
+}

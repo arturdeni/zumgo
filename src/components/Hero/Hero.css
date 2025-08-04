@@ -1,0 +1,39 @@
+/* ===== HERO SECTION ===== */
+
+.hero {
+  /* Altura completa del viewport */
+  height: 100vh;
+  min-height: 100vh;
+  background-color: var(--color-forest);
+
+  /* Centrado del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.hero__title {
+  color: var(--color-mint);
+  max-width: 800px; /* Ancho máximo para el título */
+  margin-bottom: var(--space-10);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .hero__content {
+    padding: 0 var(--space-4);
+  }
+
+  /* El H1 ya se reduce automáticamente en global.css */
+}

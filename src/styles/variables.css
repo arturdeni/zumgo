@@ -88,7 +88,6 @@
   --space-32: 8rem; /* 128px */
 
   /* === LAYOUT === */
-  --site-max-width: 1400px; /* Ancho máximo de toda la web */
   --container-max-width: 1200px; /* Contenido interno */
   --container-padding: var(--space-6);
 
