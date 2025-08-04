@@ -37,10 +37,6 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-    <!-- Fonts (agregar aquí tus fuentes cuando las tengas) -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-
     <title>{title}</title>
   </head>
 
@@ -49,12 +45,191 @@ const {
   </body>
 </html>
 
-<style>
-  /* Import fonts and global styles */
-  @import '../styles/fonts.css';
-  @import '../styles/global.css';
+<style is:global>
+  /* === FUENTES === */
+  @font-face {
+    font-family: 'Coolvetica-Rg';
+    src: url('/fonts/Coolvetica-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'EmiliaNote';
+    src: url('/fonts/EmiliaNote.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'HelveticaNeue-bold-condensed';
+    src: url('/fonts/HelveticaNeue-bold-condensed.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'HelveticaNeue-regular';
+    src: url('/fonts/HelveticaNeue-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* === VARIABLES === */
+  :root {
+    /* Colores */
+    --color-yellow: #eaa021;
+    --color-mint: #249e75;
+    --color-orange: #d85a30;
+    --color-forest: #09432e;
+    --color-cream: #fce2b7;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray-100: #f8f9fa;
+    --color-gray-200: #e9ecef;
+    --color-gray-600: #6c757d;
+    --color-gray-800: #343a40;
+
+    /* Layout */
+    --site-max-width: 1400px;
+    --container-max-width: 1200px;
+
+    /* Espaciado */
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Bordes */
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+
+    /* Transiciones */
+    --transition-base: 250ms ease;
+
+    /* Fuentes */
+    --font-family-coolvetica: 'Coolvetica-Rg', 'Arial Black', sans-serif;
+    --font-family-emilia: 'EmiliaNote', 'Brush Script MT', cursive;
+    --font-family-helvetica-condensed:
+      'HelveticaNeue-bold-condensed', 'Arial Narrow', sans-serif;
+    --font-family-helvetica-regular:
+      'HelveticaNeue-regular', 'Helvetica Neue', Arial, sans-serif;
+
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+  }
+
+  /* === RESET Y GLOBALES === */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   html {
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-family-helvetica-regular);
+    font-size: 16px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--color-gray-800);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* ANCHO MÁXIMO FIJO PARA TODA LA WEB */
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+
+  /* CONTENEDOR */
+  .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  /* TIPOGRAFÍA */
+  h1 {
+    font-family: var(--font-family-coolvetica);
+    font-size: 7.5rem; /* 120px */
+    line-height: 6.875rem; /* 110px */
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    font-family: var(--font-family-coolvetica);
+    font-size: 5rem; /* 80px */
+    line-height: 4.75rem; /* 76px */
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+
+  h3 {
+    font-family: var(--font-family-helvetica-condensed);
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5625rem; /* 25px */
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+
+  h4 {
+    font-family: var(--font-family-helvetica-regular);
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.375rem; /* 22px */
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+
+  h5 {
+    font-family: var(--font-family-emilia);
+    font-size: 1.875rem; /* 30px */
+    line-height: 1.9375rem; /* 31px */
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+
+  p {
+    font-family: var(--font-family-helvetica-regular);
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.3125rem; /* 21px */
+    margin-bottom: var(--space-4);
+  }
+
+  .text-special {
+    font-family: var(--font-family-helvetica-regular);
+    font-size: 1.5625rem; /* 25px */
+    line-height: 1.5rem; /* 24px */
+  }
+
+  .menu-text {
+    font-family: var(--font-family-helvetica-condensed);
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 767px) {
+    .container {
+      padding: 0 var(--space-4);
+    }
+
+    h1 {
+      font-size: 4rem;
+      line-height: 3.5rem;
+    }
+    h2 {
+      font-size: 3rem;
+      line-height: 2.8rem;
+    }
   }
 </style>
