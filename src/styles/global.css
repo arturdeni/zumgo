@@ -72,7 +72,7 @@ h5 {
 p {
   font-family: var(--font-family-helvetica-regular);
   font-size: var(--font-size-paragraph-rem);
-  line-height: calc(21 / 20); /* 21/20 ratio */
+  line-height: calc(22 / 20); /* 22/20 ratio */
   margin-bottom: var(--space-4);
 }
 
