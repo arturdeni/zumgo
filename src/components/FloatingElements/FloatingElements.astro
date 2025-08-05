@@ -1,0 +1,60 @@
+---
+// FloatingElements.astro - Elementos flotantes animados entre secciones
+---
+
+<section class="floating-elements">
+  <!-- Trozos de naranja DEBAJO de los vasos (z-index menor) -->
+  <div
+    class="floating-element floating-element--naranja floating-element--naranja-back floating-element--naranja1"
+  >
+    <img
+      src="/images/naranja-trozo-1.png"
+      alt="Trozo de naranja"
+      loading="lazy"
+    />
+  </div>
+
+  <div
+    class="floating-element floating-element--naranja floating-element--naranja-back floating-element--naranja2"
+  >
+    <img
+      src="/images/naranja-trozo-2.png"
+      alt="Trozo de naranja"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Los 4 vasos (z-index medio) -->
+  <div class="floating-element floating-element--vaso">
+    <img src="/images/vasos.png" alt="Vasos Zumgo" loading="lazy" />
+  </div>
+
+  <!-- Trozos de naranja ENCIMA de los vasos (z-index mayor) -->
+  <div
+    class="floating-element floating-element--naranja floating-element--naranja-front floating-element--naranja3"
+  >
+    <img
+      src="/images/naranja-trozo-3.png"
+      alt="Trozo de naranja"
+      loading="lazy"
+    />
+  </div>
+
+  <div
+    class="floating-element floating-element--naranja floating-element--naranja-front floating-element--naranja4"
+  >
+    <img
+      src="/images/naranja-trozo-4.png"
+      alt="Trozo de naranja"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  @import url('./FloatingElements.css');
+</style>
+
+<script>
+  import './FloatingElements.js'
+</script>

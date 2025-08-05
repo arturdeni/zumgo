@@ -1,0 +1,125 @@
+/* ===== FLOATING ELEMENTS ===== */
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh; /* Cubrir Hero + QueEs */
+  pointer-events: none; /* No interferir con interacciones */
+  overflow: hidden; /* Evitar scroll horizontal */
+}
+
+/* === BASE PARA TODOS LOS ELEMENTOS === */
+.floating-element {
+  position: absolute;
+  will-change: transform; /* Optimización para animaciones */
+  transform-style: preserve-3d; /* Para animaciones 3D suaves */
+}
+
+.floating-element img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Z-INDEX LAYERS === */
+/* Naranjas de atrás (debajo de vasos) */
+.floating-element--naranja-back {
+  z-index: 5;
+}
+
+/* Naranjas de delante (encima de vasos) */
+.floating-element--naranja-front {
+  z-index: 15;
+}
+
+/* === POSICIONAMIENTO INDIVIDUAL === */
+
+/* VASOS - Centrados entre las dos secciones */
+.floating-element--vaso {
+  top: 66vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1000px, 95vw); /* Responsive pero con máximo */
+  z-index: 10;
+}
+
+/* NARANJAS TRASERAS */
+.floating-element--naranja1 {
+  top: 60vh;
+  left: 10%;
+  width: min(120px, 15vw);
+  transform: rotate(-15deg);
+}
+
+.floating-element--naranja2 {
+  top: 97vh;
+  right: 15%;
+  width: min(100px, 12vw);
+  transform: rotate(25deg);
+}
+
+/* NARANJAS DELANTERAS */
+.floating-element--naranja3 {
+  top: 65vh;
+  right: 8%;
+  width: min(140px, 18vw);
+  transform: rotate(45deg);
+}
+
+.floating-element--naranja4 {
+  top: 105vh;
+  left: 31%;
+  width: min(110px, 14vw);
+  transform: rotate(-30deg);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  /* Tablet */
+  .floating-element--vaso {
+    width: min(800px, 95vw);
+    top: 75vh; /* Ajustar posición en tablet */
+  }
+
+  .floating-element--naranja1,
+  .floating-element--naranja2,
+  .floating-element--naranja3,
+  .floating-element--naranja4 {
+    width: min(100px, 12vw);
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile */
+  .floating-element--vaso {
+    top: 80vh; /* Ajustar posición en móvil */
+    width: min(500px, 120vw);
+  }
+
+  /* Reposicionar naranjas para móvil */
+  .floating-element--naranja1 {
+    top: 65vh;
+    left: 5%;
+    width: min(80px, 15vw);
+  }
+
+  .floating-element--naranja2 {
+    top: 95vh;
+    right: 8%;
+    width: min(70px, 12vw);
+  }
+
+  .floating-element--naranja3 {
+    top: 70vh;
+    right: 5%;
+    width: min(90px, 16vw);
+  }
+
+  .floating-element--naranja4 {
+    top: 90vh;
+    left: 8%;
+    width: min(75px, 13vw);
+  }
+}
