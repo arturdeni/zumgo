@@ -1,0 +1,109 @@
+/* ===== MAQUINA SECTION ===== */
+
+.maquina {
+  /* Altura completa del viewport */
+  min-height: 100vh;
+  background-color: var(--color-mint);
+
+  /* Centrado del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maquina__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+  height: 100%;
+  gap: var(--space-12);
+}
+
+/* === TEXT CONTAINER === */
+.maquina__text-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-8);
+}
+
+.maquina__title {
+  color: var(--color-forest);
+  flex: 0 0 65%; /* Máximo 55% del ancho */
+  max-width: 65%;
+  margin-bottom: 0; /* Eliminar margen bottom por defecto */
+}
+
+.maquina__description {
+  color: var(--color-white);
+  flex: 1;
+  padding-top: var(--space-4); /* Pequeño espaciado desde el título */
+}
+
+/* === IMAGE CONTAINER === */
+.maquina__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  margin-bottom: var(
+    --space-32
+  ); /* Espacio inferior para separar de otros contenidos */
+}
+
+.maquina__image {
+  max-width: 100%;
+  height: auto;
+  max-height: 60vh; /* Limitar altura para que no ocupe demasiado */
+  object-fit: contain;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .maquina__content {
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    gap: var(--space-8);
+  }
+
+  .maquina__text-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-6);
+  }
+
+  .maquina__title {
+    flex: none;
+    max-width: 100%;
+    margin-bottom: var(--space-6);
+  }
+
+  .maquina__description {
+    flex: none;
+    padding-left: 0;
+    max-width: 100%;
+  }
+
+  .maquina__image {
+    max-height: 50vh; /* Reducir altura en móvil para mejor proporción */
+  }
+}
+
+/* === TABLET === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .maquina__text-container {
+    gap: var(--space-6);
+  }
+
+  .maquina__title {
+    flex: 0 0 50%; /* Ligeramente menos ancho en tablet */
+    max-width: 50%;
+  }
+}

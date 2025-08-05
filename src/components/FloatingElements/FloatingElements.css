@@ -54,7 +54,7 @@
 }
 
 .floating-element--naranja2 {
-  top: 97vh;
+  top: 101vh;
   right: 15%;
   width: min(100px, 12vw);
   transform: rotate(25deg);
@@ -64,7 +64,7 @@
 .floating-element--naranja3 {
   top: 65vh;
   right: 8%;
-  width: min(140px, 18vw);
+  width: min(210px, 21vw);
   transform: rotate(45deg);
 }
 
@@ -114,7 +114,7 @@
   .floating-element--naranja3 {
     top: 70vh;
     right: 5%;
-    width: min(90px, 16vw);
+    width: min(130px, 22vw);
   }
 
   .floating-element--naranja4 {
