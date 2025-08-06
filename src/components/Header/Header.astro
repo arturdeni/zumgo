@@ -6,8 +6,8 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
 const navItems = [
   { name: 'Inicio', href: '#inicio' },
   { name: 'Qué es Zumgo', href: '#que-es' },
-  { name: 'Dónde funciona', href: '#donde-funciona' },
-  { name: 'Quiero una máquina', href: '#maquina' },
+  { name: 'Dónde encaja', href: '#donde-encaja' },
+  { name: 'Ubicaciones', href: '#ubicaciones' },
 ]
 ---
 
@@ -131,7 +131,7 @@ const navItems = [
     function handleScroll() {
       const currentScrollY = window.scrollY
 
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1090) {
         // Solo en desktop
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
           // Scrolling down

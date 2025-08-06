@@ -39,6 +39,10 @@
   margin-bottom: 0; /* Eliminar margen bottom por defecto */
 }
 
+.maquina__title-white {
+  color: var(--color-white);
+}
+
 .maquina__description {
   color: var(--color-white);
   flex: 1;

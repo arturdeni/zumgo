@@ -1,0 +1,64 @@
+---
+// Estadisticas.astro - Sección de estadísticas con imagen de fondo y bloques
+---
+
+<section class="estadisticas">
+  <!-- Imagen de fondo superior -->
+  <div class="estadisticas__header">
+    <!-- La imagen se aplicará como background en CSS -->
+  </div>
+
+  <!-- Contenedor principal con estadísticas -->
+  <div class="estadisticas__content">
+    <h2 class="estadisticas__title">
+      Una ola imparable: El vending saludable crece
+    </h2>
+
+    <div class="estadisticas__grid">
+      <!-- Bloque 1: Imagen de fondo con texto blanco -->
+      <div class="estadisticas__block estadisticas__block--image1">
+        <div></div>
+        <p class="text-special estadisticas__text estadisticas__text--white">
+          +2.500 máquinas activas
+        </p>
+      </div>
+
+      <!-- Bloque 2: Fondo amarillo con texto forest -->
+      <div class="estadisticas__block estadisticas__block--yellow">
+        <p class="text-special estadisticas__text estadisticas__text--forest">
+          Presencia en<br />
+          <span class="estadisticas__highlight-forest">+32 países</span>
+        </p>
+        <p class="text-special estadisticas__text estadisticas__text--forest">
+          España: más de 523.000 máquinas vending
+        </p>
+      </div>
+
+      <!-- Bloque 3: Solo imagen de fondo, sin texto -->
+      <div class="estadisticas__block estadisticas__block--image2">
+        <!-- Sin contenido de texto -->
+      </div>
+
+      <!-- Bloque 4: Fondo forest con texto orange -->
+      <div class="estadisticas__block estadisticas__block--forest">
+        <p class="text-special estadisticas__text estadisticas__text--orange">
+          +70 millones de zumos <span class="estadisticas__highlight"
+            >vendidos en el mundo</span
+          >
+        </p>
+        <p class="text-special estadisticas__text estadisticas__text--orange">
+          ROI estimado<br />
+          &lt; 6 meses
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('./Estadisticas.css');
+</style>
+
+<script>
+  import './Estadisticas.js'
+</script>

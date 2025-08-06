@@ -123,3 +123,10 @@
     width: min(75px, 13vw);
   }
 }
+
+@media (max-height: 700px) {
+  /* Ajustes para pantallas pequeñas (portatil) */
+  .floating-element--vaso {
+    width: min(850px, 120vw);
+  }
+}

@@ -154,7 +154,7 @@ select:focus {
     line-height: calc(110 / 120);
   }
   h2 {
-    font-size: 3rem; /* Reducir H2 para móvil */
+    font-size: 2.8rem; /* Reducir H2 para móvil */
     line-height: calc(76 / 80);
   }
   /* H3, H4, H5 mantienen su tamaño por ser más pequeños */

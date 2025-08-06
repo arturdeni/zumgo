@@ -205,7 +205,7 @@ body.menu-open {
 }
 
 /* === DESKTOP STYLES === */
-@media (min-width: 1024px) {
+@media (min-width: 1090px) {
   .header {
     top: var(--space-6); /* Más espaciado superior en desktop */
     width: calc(100% - var(--space-16)); /* Más margen lateral en desktop */
