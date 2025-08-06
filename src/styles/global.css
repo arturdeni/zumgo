@@ -146,20 +146,6 @@ select:focus {
   border-color: var(--color-primary);
 }
 
-/* Utilidades responsive */
-@media (max-width: 767px) {
-  /* Escala tipográfica responsive (reducir tamaños grandes) */
-  h1 {
-    font-size: 4rem; /* Reducir H1 para móvil */
-    line-height: calc(110 / 120);
-  }
-  h2 {
-    font-size: 2.8rem; /* Reducir H2 para móvil */
-    line-height: calc(76 / 80);
-  }
-  /* H3, H4, H5 mantienen su tamaño por ser más pequeños */
-}
-
 /* Clases utilitarias comunes */
 .text-center {
   text-align: center;
@@ -181,4 +167,22 @@ select:focus {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* Utilidades responsive */
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Escala tipográfica responsive (reducir tamaños grandes) */
+  h1 {
+    font-size: 4rem; /* Reducir H1 para móvil */
+    line-height: calc(110 / 120);
+  }
+  h2 {
+    font-size: 2.5rem; /* Reducir H2 para móvil */
+    line-height: calc(76 / 80);
+  }
+  /* H3, H4, H5 mantienen su tamaño por ser más pequeños */
 }
