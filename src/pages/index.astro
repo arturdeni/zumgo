@@ -9,6 +9,8 @@ import Maquina from '../components/Maquina/Maquina.astro'
 import Estadisticas from '../components/Estadisticas/Estadisticas.astro'
 import CTA from '../components/CTA/CTA.astro'
 import DondeEncaja from '../components/DondeEncaja/DondeEncaja.astro'
+import FAQs from '../components/FAQs/FAQs.astro'
+import Ubicaciones from '../components/Ubicaciones/Ubicaciones.astro'
 ---
 
 <Layout
@@ -32,14 +34,11 @@ import DondeEncaja from '../components/DondeEncaja/DondeEncaja.astro'
 
     <DondeEncaja />
 
-    <!-- Secciones futuras -->
-    <section
-      id="ubicaciones"
-      style="height: 100vh; background: #d0d0d0; display: flex; align-items: center; justify-content: center; scroll-margin-top: 120px;"
-    >
-      <h2>Ubicaciones</h2>
-    </section>
+    <FAQs />
 
+    <Ubicaciones />
+
+    <!-- Secciones futuras -->
     <section
       id="contacto"
       style="height: 100vh; background: #c0c0c0; display: flex; align-items: center; justify-content: center; scroll-margin-top: 120px;"

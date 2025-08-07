@@ -1,0 +1,205 @@
+/* ===== UBICACIONES SECTION ===== */
+
+.ubicaciones {
+  min-height: 100vh;
+  background-color: var(--color-forest);
+  padding: var(--space-20) 0;
+  scroll-margin-top: 120px;
+}
+
+.ubicaciones__content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.ubicaciones__title {
+  color: var(--color-mint);
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+/* === LAYOUT === */
+.ubicaciones__layout {
+  display: flex;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+
+/* === COLUMNA IZQUIERDA === */
+.ubicaciones__info {
+  flex: 0 0 35%;
+}
+
+.ubicaciones__subtitle {
+  color: var(--color-yellow);
+  margin-bottom: var(--space-8);
+}
+
+.ubicaciones__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* === ITEMS DE UBICACIÓN === */
+.ubicacion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.ubicacion-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.ubicacion-item.is-active {
+  background-color: var(--color-mint);
+  border-color: var(--color-yellow);
+}
+
+.ubicacion-item.is-active .ubicacion-item__nombre,
+.ubicacion-item.is-active .ubicacion-item__tipo,
+.ubicacion-item.is-active .ubicacion-item__direccion {
+  color: var(--color-white);
+}
+
+.ubicacion-item__marker {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-1);
+}
+
+.ubicacion-item__pin {
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-yellow);
+  border-radius: 50%;
+  border: 3px solid var(--color-forest);
+  transition: all var(--transition-base);
+}
+
+.ubicacion-item.is-active .ubicacion-item__pin {
+  background-color: var(--color-orange);
+  transform: scale(1.2);
+}
+
+.ubicacion-item__info {
+  flex: 1;
+}
+
+.ubicacion-item__nombre {
+  color: var(--color-white);
+  margin-bottom: var(--space-1);
+  font-weight: var(--font-weight-bold);
+}
+
+.ubicacion-item__tipo {
+  color: var(--color-yellow);
+  margin-bottom: var(--space-1);
+}
+
+.ubicacion-item__direccion {
+  color: var(--color-gray-300);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* === MAPA === */
+.ubicaciones__map-container {
+  flex: 1;
+  height: 600px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-top: 3.5rem;
+}
+
+.ubicaciones__map {
+  width: 100%;
+  height: 100%;
+}
+
+/* === POPUP STYLES === */
+.mapboxgl-popup-content {
+  background-color: var(--color-white) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--space-4) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: none !important;
+  min-width: 200px !important;
+}
+
+.mapboxgl-popup-close-button {
+  color: var(--color-forest) !important;
+  font-size: 20px !important;
+  padding: var(--space-2) !important;
+}
+
+.popup__nombre {
+  color: var(--color-forest);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+}
+
+.popup__tipo {
+  color: var(--color-orange);
+  margin-bottom: var(--space-1);
+}
+
+.popup__direccion {
+  color: var(--color-gray-600);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1023px) {
+  .ubicaciones__layout {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .ubicaciones__info {
+    width: 100%;
+  }
+
+  .ubicaciones__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .ubicaciones {
+    padding: var(--space-16) 0;
+  }
+
+  .ubicaciones__content {
+    padding: 0 var(--space-4);
+  }
+
+  .ubicaciones__title {
+    margin-bottom: var(--space-12);
+  }
+
+  .ubicaciones__list {
+    grid-template-columns: 1fr;
+  }
+
+  .ubicacion-item {
+    padding: var(--space-4);
+  }
+}

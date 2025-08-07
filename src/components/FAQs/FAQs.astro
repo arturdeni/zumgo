@@ -1,0 +1,109 @@
+---
+// FAQs.astro - Sección de Preguntas Frecuentes
+
+// Datos de las preguntas frecuentes
+const faqs = [
+  {
+    question: '¿Qué tipo de zumo ofrece la máquina Zumgo?',
+    answer:
+      'Zumgo ofrece zumo de naranja 100% natural, recién exprimido al momento sin aditivos, conservantes ni azúcares añadidos. Cada vaso se prepara fresco en tan solo 40 segundos.',
+  },
+  {
+    question: '¿Cuánto tarda en prepararse un zumo?',
+    answer:
+      'Nuestras máquinas inteligentes exprimen y sirven un zumo fresco en exactamente 40 segundos. Todo el proceso se realiza de forma automática y frente al consumidor.',
+  },
+  {
+    question: '¿Qué mantenimiento requiere la máquina?',
+    answer:
+      'Las máquinas Zumgo están diseñadas para un mantenimiento mínimo. Incluyen sistemas de autolimpieza y solo requieren reposición de naranjas y limpieza básica periódica.',
+  },
+  {
+    question: '¿Dónde se puede colocar una máquina Zumgo?',
+    answer:
+      'Zumgo se adapta a cualquier espacio con tráfico de personas: gimnasios, hospitales, centros comerciales, universidades, aeropuertos y estaciones de tren. Solo necesita una toma de corriente.',
+  },
+  {
+    question: '¿Qué beneficios tiene para los usuarios?',
+    answer:
+      'Zumgo ofrece una opción de bebida fresca, saludable, cómoda y rápida. Es ideal para quienes buscan cuidarse sin perder tiempo y sin renunciar al sabor natural de un buen zumo.',
+  },
+  {
+    question: '¿Qué necesita el espacio que quiere tener una máquina?',
+    answer:
+      'Solo necesitas un espacio de aproximadamente 1m² y una toma de corriente estándar. No se requiere instalación especial de agua, desagües o infraestructura adicional.',
+  },
+]
+---
+
+<section class="faqs">
+  <div class="faqs__container">
+    <!-- Columna izquierda con imágenes (solo desktop) -->
+    <div class="faqs__images">
+      <div class="faqs__image faqs__image--top">
+        <img
+          src="/images/faq-naranjas-maquina.webp"
+          alt="Naranjas en máquina Zumgo"
+          loading="lazy"
+        />
+      </div>
+      <div class="faqs__image faqs__image--bottom">
+        <img
+          src="/images/faq-naranjas-naturales.webp"
+          alt="Naranjas naturales"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Columna derecha con contenido -->
+    <div class="faqs__content">
+      <h2 class="faqs__title">Preguntas Frecuentes</h2>
+
+      <h3 class="faqs__subtitle">
+        Resolvemos tus dudas en 40 segundos, como nuestro zumo.
+      </h3>
+
+      <!-- Lista de FAQs -->
+      <div class="faqs__list">
+        {
+          faqs.map((faq, index) => (
+            <div class="faq-item" data-faq-index={index}>
+              <button class="faq-item__trigger" type="button">
+                <p class="faq-item__question">{faq.question}</p>
+                <svg
+                  class="faq-item__icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <div class="faq-item__content">
+                <p class="faq-item__answer">{faq.answer}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('./FAQs.css');
+</style>
+
+<script>
+  import './FAQs.js'
+</script>
