@@ -100,53 +100,64 @@ const ubicaciones = [
   let markers = []
 
   document.addEventListener('DOMContentLoaded', function () {
-    initMap()
-    initUbicacionesInteraction()
+    setTimeout(() => {
+      initMap()
+      initUbicacionesInteraction()
+    }, 200)
   })
 
   function initMap() {
     const accessToken = window.mapboxToken
+    const mapContainer = document.getElementById('mapa-zumgo')
 
     if (!accessToken) {
-      console.error('MAPBOX_ACCESS_TOKEN no encontrado')
-      document.getElementById('mapa-zumgo').innerHTML =
-        '<div style="padding: 2rem; text-align: center; color: #999;">Error: Token de Mapbox no configurado</div>'
+      mapContainer.innerHTML =
+        '<div style="padding: 2rem; text-align: center; color: var(--color-mint);">Error: Token de Mapbox no configurado</div>'
       return
     }
 
-    // Configurar Mapbox
+    // Verificar dimensiones y forzar si es necesario
+    if (mapContainer.offsetWidth === 0 || mapContainer.offsetHeight === 0) {
+      const isMobile = window.innerWidth <= 767
+      mapContainer.style.width = '100%'
+      mapContainer.style.height = isMobile ? '400px' : '600px'
+      mapContainer.style.minHeight = isMobile ? '400px' : '600px'
+      mapContainer.style.display = 'block'
+
+      setTimeout(() => {
+        createMap(accessToken, mapContainer)
+      }, 100)
+    } else {
+      createMap(accessToken, mapContainer)
+    }
+  }
+
+  function createMap(accessToken, mapContainer) {
     mapboxgl.accessToken = accessToken
 
     try {
-      // Crear el mapa
       map = new mapboxgl.Map({
         container: 'mapa-zumgo',
-        style: 'mapbox://styles/arturde/cme17f2t600j501sch8kddpcg', // Tu estilo (debe ser público)
-        center: [2.155, 41.3851], // Centro de Barcelona
-        zoom: 12.5,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [2.155, 41.3851],
+        zoom: window.innerWidth < 768 ? 11.5 : 12.5,
         pitch: 0,
         bearing: 0,
       })
 
-      // Cuando el mapa esté listo
       map.on('load', () => {
-        console.log('Mapa cargado correctamente')
         addUbicacionesMarkers()
       })
 
-      // Manejar errores del mapa
       map.on('error', (e) => {
-        console.error('Error del mapa:', e)
-        document.getElementById('mapa-zumgo').innerHTML =
-          '<div style="padding: 2rem; text-align: center; color: #999;">Error al cargar el mapa</div>'
+        mapContainer.innerHTML =
+          '<div style="padding: 2rem; text-align: center; color: var(--color-yellow);">Error al cargar el mapa</div>'
       })
 
-      // Controles de navegación
       map.addControl(new mapboxgl.NavigationControl(), 'top-right')
     } catch (error) {
-      console.error('Error inicializando Mapbox:', error)
-      document.getElementById('mapa-zumgo').innerHTML =
-        '<div style="padding: 2rem; text-align: center; color: #999;">Error al inicializar el mapa</div>'
+      mapContainer.innerHTML =
+        '<div style="padding: 2rem; text-align: center; color: var(--color-yellow);">Error al inicializar el mapa</div>'
     }
   }
 
@@ -158,7 +169,6 @@ const ubicaciones = [
     }
 
     ubicaciones.forEach((ubicacion) => {
-      // Crear elemento personalizado para el marcador
       const markerElement = document.createElement('div')
       markerElement.className = 'custom-marker'
       markerElement.innerHTML = `
@@ -187,19 +197,16 @@ const ubicaciones = [
         </div>
       `
 
-      // Crear marcador
       const marker = new mapboxgl.Marker(markerElement)
         .setLngLat(ubicacion.coordenadas)
         .addTo(map)
 
-      // Guardar referencia
       markers.push({
         marker: marker,
         ubicacion: ubicacion,
         element: markerElement,
       })
 
-      // Click en el marcador
       markerElement.addEventListener('click', () => {
         highlightUbicacion(ubicacion.id)
       })
@@ -207,12 +214,10 @@ const ubicaciones = [
   }
 
   function highlightUbicacion(ubicacionId) {
-    // Remover clase activa de todos los items
     document.querySelectorAll('.ubicacion-item').forEach((item) => {
       item.classList.remove('is-active')
     })
 
-    // Añadir clase activa al item seleccionado
     const selectedItem = document.querySelector(
       `[data-ubicacion-id="${ubicacionId}"]`
     )
@@ -220,7 +225,6 @@ const ubicaciones = [
       selectedItem.classList.add('is-active')
     }
 
-    // Destacar marcador en el mapa
     markers.forEach((markerData) => {
       const markerPin = markerData.element.querySelector('.marker-pin')
 
@@ -229,7 +233,7 @@ const ubicaciones = [
           'linear-gradient(135deg, var(--color-orange) 0%, #b8471a 100%)'
         markerPin.style.transform = 'rotate(-45deg) scale(1.3)'
         markerPin.style.borderColor = 'var(--color-yellow)'
-        // Centrar mapa en esta ubicación
+
         if (map) {
           map.flyTo({
             center: markerData.ubicacion.coordenadas,
@@ -247,7 +251,6 @@ const ubicaciones = [
   }
 
   function initUbicacionesInteraction() {
-    // Click en items de la lista
     document.querySelectorAll('.ubicacion-item').forEach((item) => {
       item.addEventListener('click', () => {
         const ubicacionId = parseInt(item.dataset.ubicacionId)
@@ -256,7 +259,6 @@ const ubicaciones = [
     })
   }
 
-  // Resize handler
   window.addEventListener('resize', () => {
     if (map) {
       setTimeout(() => {

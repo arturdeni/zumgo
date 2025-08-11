@@ -63,8 +63,7 @@
 
 .maquina__image {
   max-width: 100%;
-  height: auto;
-  max-height: 60vh; /* Limitar altura para que no ocupe demasiado */
+  height: 600px;
   object-fit: contain;
 }
 
@@ -95,8 +94,14 @@
     max-width: 100%;
   }
 
+  .maquina__image-container {
+    margin-bottom: var(--space-2);
+  }
+
   .maquina__image {
-    max-height: 50vh; /* Reducir altura en móvil para mejor proporción */
+    max-height: 500px;
+    content: url('/images/maquina-vending-mobile.webp');
+    margin-top: var(--space-16);
   }
 }
 
