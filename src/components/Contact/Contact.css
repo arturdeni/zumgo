@@ -12,11 +12,11 @@
   padding: 0 var(--container-padding);
 
   /* Imagen de fondo del contenedor interno */
-  background-image: url('/images/estadisticas-textura.jpg');
+  background-image: url('/images/contact-background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-3xl);
   overflow: hidden;
 
   /* Efecto overlay para mejorar legibilidad */

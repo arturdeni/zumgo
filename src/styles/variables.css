@@ -113,6 +113,7 @@
   --radius-lg: 0.5rem; /* 8px */
   --radius-xl: 0.75rem; /* 12px */
   --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 3rem; /* 48px */
   --radius-full: 9999px;
 
   /* === TRANSICIONES === */
