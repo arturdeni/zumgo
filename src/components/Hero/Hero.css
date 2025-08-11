@@ -23,17 +23,126 @@
   width: 100%;
 }
 
-.hero__title {
-  color: var(--color-mint);
-  max-width: 800px; /* Ancho máximo para el título */
+/* === CONTENEDOR DEL TÍTULO CON NOTAS === */
+.hero__title-container {
+  position: relative;
+  display: inline-block;
   margin-bottom: var(--space-10);
 }
 
+.hero__title {
+  color: var(--color-mint);
+  max-width: 800px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* === CONTENEDOR DE NOTAS === */
+.hero__notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === NOTAS COMO IMÁGENES === */
+.hero__note {
+  position: absolute;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease;
+  width: 240px;
+  height: auto;
+}
+
+/* === POSICIONAMIENTO ESPECÍFICO === */
+
+/* Nota 1: "Recién exprimido" - Arriba izquierda */
+.hero__note--1 {
+  top: -4em;
+  left: -5em;
+  transform-origin: center left;
+}
+
+/* Nota 2: "Zumo natural" - Derecha */
+.hero__note--2 {
+  top: -3em;
+  right: -6em;
+  transform-origin: center right;
+  width: 290px;
+}
+
+/* Nota 3: "Salud al instante" - Abajo derecha */
+.hero__note--3 {
+  bottom: -2.5em;
+  right: -2em;
+  transform-origin: center right;
+}
+
+/* Nota 4: "Sin aditivos ni azúcar" - Izquierda abajo */
+.hero__note--4 {
+  bottom: -1.5em;
+  left: -2em;
+  transform-origin: center left;
+}
+
 /* === RESPONSIVE === */
-@media (max-width: 767px) {
-  .hero__content {
-    padding: 0 var(--space-4);
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero__note--1 {
+    top: -11em;
+    left: 0;
   }
 
-  /* El H1 ya se reduce automáticamente en global.css */
+  .hero__note--2 {
+    top: -5em;
+    right: 0;
+  }
+
+  .hero__note--3 {
+    bottom: -2em;
+    right: 0;
+  }
+
+  .hero__note--4 {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero__note {
+    width: 170px;
+  }
+
+  .hero__note--1 {
+    top: -10em;
+    left: 1em;
+    transform: rotate(20deg);
+  }
+
+  .hero__note--2 {
+    transform: rotate(-20deg);
+    top: -8em;
+    width: 220px;
+  }
+
+  .hero__note--3 {
+    bottom: -12em;
+  }
+
+  .hero__note--4 {
+    bottom: -9em;
+  }
+}
+
+/* === FALLBACK SIN JAVASCRIPT === */
+.no-js .hero__note {
+  opacity: 1;
+  transform: scale(1);
 }
