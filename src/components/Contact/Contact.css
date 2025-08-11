@@ -84,6 +84,7 @@
   width: 100%;
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 168, 54, 0.9);
   background-color: rgba(255, 168, 54, 0.9);
   color: white;
   font-family: var(--font-family-helvetica-regular);

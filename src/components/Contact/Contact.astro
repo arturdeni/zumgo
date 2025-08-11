@@ -1,5 +1,5 @@
 ---
-// Contact.astro - Componente de formulario de contacto
+// Contact.astro - Componente de formulario de contacto con EmailJS
 import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
 ---
 
@@ -48,7 +48,7 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
               type="tel"
               id="telefono"
               name="telefono"
-              placeholder="Teléfono*"
+              placeholder="Teléfono"
               class="contact__input"
             />
           </div>
@@ -89,6 +89,13 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
   @import url('./Contact.css');
 </style>
 
+<!-- EmailJS CDN -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+<!-- Script del formulario -->
 <script>
   import './Contact.js'
 </script>

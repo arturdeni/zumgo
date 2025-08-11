@@ -1,8 +1,22 @@
-// Contact.js - Funcionalidad del formulario de contacto
+// Contact.js - Funcionalidad del formulario de contacto con variables de entorno
 
 document.addEventListener('DOMContentLoaded', function () {
   initContactForm()
+  initEmailJS()
 })
+
+// Configuración de EmailJS usando variables de entorno
+function initEmailJS() {
+  // Obtener la Public Key desde variables de entorno
+  const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY
+
+  if (!publicKey) {
+    console.error('EmailJS Public Key no configurada')
+    return
+  }
+
+  emailjs.init(publicKey)
+}
 
 function initContactForm() {
   const form = document.getElementById('contactForm')
@@ -19,7 +33,7 @@ function initContactForm() {
   })
 }
 
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault()
 
   const form = event.target
@@ -41,10 +55,78 @@ function handleFormSubmit(event) {
     mensaje: formData.get('mensaje'),
   }
 
-  // Simular envío (aquí irá la lógica real más adelante)
-  simulateFormSubmit(form, data)
+  // Enviar email real
+  await sendEmailReal(form, data)
 }
 
+// FUNCIÓN PRINCIPAL: Envío real del email
+async function sendEmailReal(form, data) {
+  // Obtener credenciales desde variables de entorno
+  const serviceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID
+  const templateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID
+
+  if (!serviceId || !templateId) {
+    console.error('EmailJS Service ID o Template ID no configurados')
+    showError('Error de configuración. Contacta al administrador.')
+    return
+  }
+
+  // Agregar clase de loading
+  form.classList.add('is-loading')
+
+  // Deshabilitar botón de submit
+  const submitButton = form.querySelector('button[type="submit"]')
+  const originalButtonText = submitButton.textContent
+  submitButton.disabled = true
+  submitButton.textContent = 'Enviando...'
+
+  try {
+    // Preparar datos para EmailJS
+    const templateParams = {
+      from_name: `${data.nombre} ${data.apellidos}`,
+      from_email: data.email,
+      phone: data.telefono || 'No especificado',
+      subject: data.motivo || 'Consulta desde web Zumgo',
+      message: data.mensaje || 'Sin mensaje específico',
+      to_email: 'hola@zumgojuice.com',
+    }
+
+    // Enviar email usando EmailJS con variables de entorno
+    const response = await emailjs.send(
+      serviceId, // Service ID desde .env
+      templateId, // Template ID desde .env
+      templateParams
+    )
+
+    console.log('Email enviado exitosamente:', response)
+
+    // Mostrar mensaje de éxito
+    showSuccess(
+      '¡Gracias por contactarnos! Hemos recibido tu mensaje y te responderemos pronto.'
+    )
+
+    // Limpiar formulario
+    form.reset()
+  } catch (error) {
+    console.error('Error al enviar email:', error)
+
+    // Mostrar mensaje de error específico
+    if (error.text) {
+      showError(`Error al enviar el mensaje: ${error.text}`)
+    } else {
+      showError(
+        'Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.'
+      )
+    }
+  } finally {
+    // Restaurar estado del formulario
+    form.classList.remove('is-loading')
+    submitButton.disabled = false
+    submitButton.textContent = originalButtonText
+  }
+}
+
+// === FUNCIONES DE VALIDACIÓN ===
 function validateForm(form) {
   let isValid = true
   const requiredFields = form.querySelectorAll('[required]')
@@ -105,7 +187,12 @@ function showFieldError(field, message) {
   if (!errorElement) {
     errorElement = document.createElement('span')
     errorElement.className = 'field-error'
-    errorElement.style.cssText = `color: var(--color-white);`
+    errorElement.style.cssText = `
+      color: var(--color-white);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: block;
+    `
     field.parentNode.appendChild(errorElement)
   }
   errorElement.textContent = message
@@ -119,89 +206,69 @@ function clearFieldError(field) {
   }
 }
 
+// === NOTIFICACIONES ===
 function showError(message) {
-  // Crear notificación de error temporal
-  const errorDiv = document.createElement('div')
-  errorDiv.className = 'contact-error-message'
-  errorDiv.textContent = message
-  errorDiv.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--color-orange);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: var(--radius-lg);
-    z-index: 1000;
-    font-family: var(--font-family-helvetica-regular);
-    box-shadow: var(--shadow-lg);
-  `
-
-  document.body.appendChild(errorDiv)
-
-  // Eliminar después de 3 segundos
-  setTimeout(() => {
-    if (errorDiv.parentNode) {
-      errorDiv.parentNode.removeChild(errorDiv)
-    }
-  }, 3000)
+  showNotification(message, 'error')
 }
 
 function showSuccess(message) {
-  // Crear notificación de éxito temporal
-  const successDiv = document.createElement('div')
-  successDiv.className = 'contact-success-message'
-  successDiv.textContent = message
-  successDiv.style.cssText = `
+  showNotification(message, 'success')
+}
+
+function showNotification(message, type) {
+  // Crear notificación
+  const notificationDiv = document.createElement('div')
+  notificationDiv.className = `contact-notification contact-notification--${type}`
+  notificationDiv.textContent = message
+
+  const backgroundColor =
+    type === 'success' ? 'var(--color-mint)' : 'var(--color-orange)'
+
+  notificationDiv.style.cssText = `
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--color-mint);
+    top: 20px;
+    right: 20px;
+    background: ${backgroundColor};
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: var(--radius-lg);
     z-index: 1000;
     font-family: var(--font-family-helvetica-regular);
     box-shadow: var(--shadow-lg);
+    max-width: 400px;
+    animation: slideInRight 0.3s ease-out;
   `
 
-  document.body.appendChild(successDiv)
+  // Agregar animación CSS si no existe
+  if (!document.querySelector('#notification-styles')) {
+    const styleSheet = document.createElement('style')
+    styleSheet.id = 'notification-styles'
+    styleSheet.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    `
+    document.head.appendChild(styleSheet)
+  }
 
-  // Eliminar después de 4 segundos
+  document.body.appendChild(notificationDiv)
+
+  // Eliminar después de 5 segundos
   setTimeout(() => {
-    if (successDiv.parentNode) {
-      successDiv.parentNode.removeChild(successDiv)
+    if (notificationDiv.parentNode) {
+      notificationDiv.style.animation = 'slideInRight 0.3s ease-out reverse'
+      setTimeout(() => {
+        if (notificationDiv.parentNode) {
+          notificationDiv.parentNode.removeChild(notificationDiv)
+        }
+      }, 300)
     }
-  }, 4000)
-}
-
-function simulateFormSubmit(form, data) {
-  // Agregar clase de loading
-  form.classList.add('is-loading')
-
-  // Simular retraso de envío
-  setTimeout(() => {
-    form.classList.remove('is-loading')
-
-    // Mostrar mensaje de éxito
-    showSuccess('¡Gracias por contactarnos! Te responderemos pronto.')
-
-    // Limpiar formulario
-    form.reset()
-
-    // Log de los datos (para desarrollo)
-    console.log('Datos del formulario:', data)
-
-    // Aquí irá la lógica real de envío de email más adelante
-    // Por ejemplo: sendEmail(data)
-  }, 1500) // Simular 1.5 segundos de envío
-}
-
-// Función placeholder para el envío real (implementar más adelante)
-function sendEmail(data) {
-  // TODO: Implementar envío real del email
-  // Opciones: EmailJS, Formspree, Netlify Forms, etc.
-  console.log('Enviando email con datos:', data)
+  }, 5000)
 }
