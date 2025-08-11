@@ -62,15 +62,15 @@
 
 /* Nota 1: "Recién exprimido" - Arriba izquierda */
 .hero__note--1 {
-  top: -4em;
-  left: -5em;
+  top: -2.5em;
+  left: -7em;
   transform-origin: center left;
 }
 
 /* Nota 2: "Zumo natural" - Derecha */
 .hero__note--2 {
   top: -3em;
-  right: -6em;
+  right: -6.5em;
   transform-origin: center right;
   width: 290px;
 }
@@ -84,8 +84,8 @@
 
 /* Nota 4: "Sin aditivos ni azúcar" - Izquierda abajo */
 .hero__note--4 {
-  bottom: -1.5em;
-  left: -2em;
+  bottom: -3em;
+  left: -5em;
   transform-origin: center left;
 }
 
@@ -109,35 +109,43 @@
   }
 
   .hero__note--4 {
-    bottom: 0;
+    bottom: -3em;
     left: 0;
   }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
+  .hero__title-container {
+    margin-bottom: var(--space-24);
+  }
+  .hero__title-break {
+    display: none;
+  }
+
   .hero__note {
     width: 170px;
   }
 
   .hero__note--1 {
-    top: -10em;
+    top: -6.5em;
     left: 1em;
-    transform: rotate(20deg);
+    width: 120px;
+    content: url('/images/recien-exprimido-mobile.png');
   }
 
   .hero__note--2 {
-    transform: rotate(-20deg);
-    top: -8em;
+    top: -4.5em;
+    right: -1em;
     width: 220px;
   }
 
   .hero__note--3 {
-    bottom: -12em;
+    bottom: -2em;
   }
 
   .hero__note--4 {
-    bottom: -9em;
+    bottom: -2em;
   }
 }
 
