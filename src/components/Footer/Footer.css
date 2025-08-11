@@ -1,0 +1,340 @@
+/* ===== FOOTER COMPONENT ===== */
+
+.footer {
+  background-color: var(--color-forest);
+  width: 100%;
+  padding: var(--space-16) 0 var(--space-12);
+}
+
+.footer__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* === FILAS === */
+.footer__row {
+  display: flex;
+  width: 100%;
+}
+
+/* FILA 1: Contenido principal (3 columnas en desktop) */
+.footer__row--main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* FILA 2: Enlaces legales */
+.footer__row--legal {
+  justify-content: flex-start;
+}
+
+/* === COLUMNAS === */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === COLUMNA 1: CONTACTO === */
+.footer__column--contact {
+  gap: var(--space-6);
+}
+
+.footer__logo {
+  margin-bottom: var(--space-2);
+}
+
+.footer__logo-image {
+  height: 50px;
+  width: auto;
+  /* FILTRO DE COLOR MINT AL LOGO */
+  filter: brightness(0) saturate(100%) invert(53%) sepia(37%) saturate(6229%)
+    hue-rotate(130deg) brightness(92%) contrast(89%);
+}
+
+/* Información de contacto */
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__contact-item {
+  color: var(--color-white);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-h4-rem);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__contact-item:hover {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+
+/* === COLUMNA 2: MENÚ === */
+.footer__menu-title {
+  color: var(--color-mint);
+  font-size: var(--font-size-h3-rem);
+  margin-bottom: var(--space-4);
+}
+
+.footer__nav {
+  margin-bottom: var(--space-4);
+}
+
+.footer__nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0 var(--space-6);
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.footer__nav-item {
+  margin: 0;
+}
+
+.footer__nav-link {
+  color: var(--color-white);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-h4-rem);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: block;
+}
+
+.footer__nav-link:hover {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+
+/* === COLUMNA 3: DIRECCIÓN === */
+.footer__column--address {
+  gap: var(--space-8);
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Dirección */
+.footer__address-content {
+  color: var(--color-white);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-h4-rem);
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* === REDES SOCIALES === */
+.footer__social {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer__social--desktop {
+  justify-content: flex-end;
+}
+
+.footer__social--mobile {
+  justify-content: flex-start;
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-mint);
+  border-radius: 50%;
+  color: var(--color-mint);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  background-color: transparent;
+}
+
+.footer__social-link:hover {
+  background-color: var(--color-mint);
+  color: var(--color-forest);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* === ENLACES LEGALES === */
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.footer__legal-link {
+  color: var(--color-mint);
+  font-family: var(--font-family-helvetica-regular);
+  font-size: 0.875rem; /* 14px */
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.footer__legal-link:hover {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+
+/* === CONTROL DE VISIBILIDAD === */
+
+/* Por defecto mostrar elementos desktop */
+.footer__address--mobile,
+.footer__social--mobile {
+  display: none;
+}
+
+.footer__address--desktop,
+.footer__social--desktop {
+  display: flex;
+}
+
+.footer__address--desktop {
+  flex-direction: column;
+}
+
+/* === RESPONSIVE === */
+
+/* Mobile */
+@media (max-width: 767px) {
+  .footer {
+    padding: var(--space-12) 0 var(--space-8);
+  }
+
+  .footer__container {
+    gap: var(--space-8);
+  }
+
+  /* FILA 1: 2 columnas en mobile */
+  .footer__row--main {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Columna de contacto: incluye logo, contacto y dirección */
+  .footer__column--contact {
+    gap: var(--space-4);
+  }
+
+  /* Columna de menú: incluye menú y redes sociales */
+  .footer__column--menu {
+    gap: var(--space-4);
+  }
+
+  /* Ocultar columna de dirección en mobile */
+  .footer__column--address {
+    display: none;
+  }
+
+  /* FILA 2: Enlaces legales ocupan todo el ancho */
+  .footer__row--legal {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .footer__legal {
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  /* Mostrar elementos mobile, ocultar desktop */
+  .footer__address--mobile,
+  .footer__social--mobile {
+    display: flex;
+  }
+
+  .footer__address--desktop,
+  .footer__social--desktop {
+    display: none;
+  }
+
+  /* Ajustar alineaciones para mobile */
+  .footer__column--contact,
+  .footer__column--menu {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__address--mobile {
+    flex-direction: column;
+    margin-top: var(--space-4);
+    text-align: left;
+  }
+
+  .footer__address--mobile .footer__address-title {
+    text-align: left;
+  }
+
+  /* Ajustar tamaños de fuente en móvil */
+  .footer__contact-item {
+    font-size: 1.1rem;
+  }
+
+  .footer__nav-link {
+    font-size: 1.1rem;
+  }
+
+  .footer__menu-title,
+  .footer__address-title {
+    font-size: 1.1rem;
+  }
+
+  .footer__address-content {
+    font-size: 1rem;
+  }
+
+  .footer__legal-link {
+    font-size: 0.8rem;
+  }
+
+  .footer__social-link {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer__container {
+    gap: var(--space-10);
+  }
+
+  .footer__row--main {
+    gap: var(--space-10);
+  }
+
+  .footer__legal {
+    gap: var(--space-5);
+  }
+}
+
+/* === ACCESIBILIDAD === */
+@media (prefers-reduced-motion: reduce) {
+  .footer__social-link {
+    transition: none;
+  }
+
+  .footer__social-link:hover {
+    transform: none;
+  }
+}
