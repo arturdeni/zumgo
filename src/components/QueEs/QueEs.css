@@ -2,8 +2,7 @@
 
 .que-es {
   /* Altura completa del viewport */
-  height: 100vh;
-  min-height: 100vh;
+  height: 130vh;
   background-color: var(--color-mint);
 
   /* Centrado del contenido */
@@ -37,6 +36,20 @@
 .que-es__highlight {
   color: var(--color-forest);
   font-weight: var(--font-weight-bold);
+}
+
+.que-es__note {
+  margin-top: var(--space-10);
+  color: var(--color-forest);
+}
+
+.que-es__note-text {
+  font-family: var(--font-family-emilia);
+  font-size: var(--font-size-h5);
+  font-weight: 500;
+  fill: var(--color-forest);
+  text-anchor: middle; /* Centra horizontalmente */
+  dominant-baseline: middle; /* Centra verticalmente */
 }
 
 /* === RESPONSIVE === */

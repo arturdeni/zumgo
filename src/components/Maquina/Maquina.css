@@ -56,6 +56,7 @@
   justify-content: center;
   width: 100%;
   flex: 1;
+  margin-left: var(--space-32);
   margin-bottom: var(
     --space-32
   ); /* Espacio inferior para separar de otros contenidos */
@@ -96,6 +97,7 @@
 
   .maquina__image-container {
     margin-bottom: var(--space-2);
+    margin-left: 0;
   }
 
   .maquina__image {
