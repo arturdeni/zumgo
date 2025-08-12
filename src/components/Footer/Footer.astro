@@ -163,14 +163,26 @@
     <!-- FILA 2: Enlaces legales -->
     <div class="footer__row footer__row--legal">
       <div class="footer__legal">
-        <a href="#condiciones" class="footer__legal-link"
-          >Condiciones generales</a
+        <a
+          href="#condiciones"
+          onclick="openLegalModal('condiciones')"
+          class="footer__legal-link">Condiciones generales</a
         >
-        <a href="#aviso-legal" class="footer__legal-link">Aviso legal</a>
-        <a href="#privacidad" class="footer__legal-link"
-          >Política de privacidad</a
+        <a
+          href="#aviso-legal"
+          onclick="openLegalModal('aviso')"
+          class="footer__legal-link">Aviso legal</a
         >
-        <a href="#cookies" class="footer__legal-link">Política de cookies</a>
+        <a
+          href="#privacidad"
+          onclick="openLegalModal('privacidad')"
+          class="footer__legal-link">Política de privacidad</a
+        >
+        <a
+          href="#cookies"
+          onclick="openLegalModal('cookies')"
+          class="footer__legal-link">Política de cookies</a
+        >
       </div>
     </div>
   </div>

@@ -1,5 +1,9 @@
 ---
 // Layout.astro - Layout principal de Zumgo
+
+import LegalModals from '../components/LegalModals/LegalModals.astro'
+import CookieModal from '../components/CookieModal/CookieModal.astro'
+
 export interface Props {
   title: string
   description?: string
@@ -42,6 +46,15 @@ const {
 
   <body>
     <slot />
+    <CookieModal />
+    <LegalModals
+      companyName="Orange Machines S.L."
+      email="hola@zumgojuice.com"
+      phone="+34638736440"
+      address="Calle Calabria 281 2n 4a. 08007. Barcelona, España"
+      nif="B21891262"
+      website="zumgojuice.com"
+    />
   </body>
 </html>
 
