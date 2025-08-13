@@ -3,6 +3,7 @@
 .legal-modal-overlay {
   display: none;
   position: fixed;
+  will-change: transform;
   top: 0;
   left: 0;
   width: 100%;

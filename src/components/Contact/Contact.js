@@ -226,6 +226,7 @@ function showNotification(message, type) {
 
   notificationDiv.style.cssText = `
     position: fixed;
+    will-change: transform;
     top: 20px;
     right: 20px;
     background: ${backgroundColor};

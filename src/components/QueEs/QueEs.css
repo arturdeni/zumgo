@@ -2,8 +2,10 @@
 
 .que-es {
   /* Altura completa del viewport */
-  height: 130vh;
+  height: 110vh;
   background-color: var(--color-mint);
+
+  padding-top: var(--space-20);
 
   /* Centrado del contenido */
   display: flex;

@@ -12,6 +12,7 @@
   transition: transform var(--transition-base);
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-full); /* Bordes redondeados flotante */
+  will-change: transform;
 }
 
 .header--hidden {
@@ -131,6 +132,7 @@
 /* === MOBILE NAVIGATION === */
 .header__nav--mobile {
   position: fixed;
+  will-change: transform;
   top: 0;
   right: 0;
   height: 100vh;
@@ -183,6 +185,7 @@
 /* === OVERLAY === */
 .header__overlay {
   position: fixed;
+  will-change: transform;
   top: 0;
   left: 0;
   width: 100%;
