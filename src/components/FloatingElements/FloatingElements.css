@@ -93,6 +93,11 @@
 
 @media (max-width: 767px) {
   /* Mobile */
+  .floating-element {
+    animation: none !important;
+    transition: none !important;
+  }
+
   .floating-element--vaso {
     top: 80vh; /* Ajustar posición en móvil */
     width: min(500px, 120vw);

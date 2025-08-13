@@ -17,6 +17,7 @@ html {
   font-family: var(--font-family-helvetica-regular);
   font-size: 16px; /* Base para cálculos rem */
   line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -170,8 +171,16 @@ select:focus {
 
 /* Utilidades responsive */
 @media (max-width: 767px) {
-  html {
+  html,
+  body {
     scroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Simplificar elementos flotantes en móvil */
+  .floating-element {
+    animation-play-state: paused !important;
+    will-change: auto;
   }
 
   /* Escala tipográfica responsive (reducir tamaños grandes) */
