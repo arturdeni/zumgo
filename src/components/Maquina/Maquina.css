@@ -91,13 +91,20 @@
   line-height: var(--line-height-paragraph);
   font-weight: var(--font-weight-bold);
   color: var(--color-forest);
-  /* Para animación GSAP */
-  opacity: 0;
-  transform: translateY(20px);
+  margin-bottom: var(--space-4);
+  /* Contenedor para el efecto máscara */
+  overflow: hidden;
+  height: 20px; /* Altura fija basada en line-height */
 }
 
 .maquina__feature-item:last-child {
   margin-bottom: 0;
+}
+
+.maquina__feature-text {
+  display: block;
+  /* Estado inicial para animación GSAP: texto debajo de la máscara */
+  transform: translateY(100%);
 }
 
 /* === RESPONSIVE === */
