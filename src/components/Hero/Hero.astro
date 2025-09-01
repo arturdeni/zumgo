@@ -12,41 +12,6 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
           class="hero__title-break"
         />sin esperas
       </h1>
-
-      <!-- Notas como imágenes PNG -->
-      <div class="hero__notes">
-        <!-- Nota 1: "Recién exprimido" - Arriba izquierda -->
-        <img
-          src="/images/recien-exprimido.png"
-          alt="Recién exprimido"
-          class="hero__note hero__note--1"
-          loading="lazy"
-        />
-
-        <!-- Nota 2: "Zumo natural" - Derecha -->
-        <img
-          src="/images/zumo-natural.png"
-          alt="Zumo natural"
-          class="hero__note hero__note--2"
-          loading="lazy"
-        />
-
-        <!-- Nota 3: "Salud al instante" - Abajo derecha -->
-        <img
-          src="/images/salud-instante.png"
-          alt="Salud al instante"
-          class="hero__note hero__note--3"
-          loading="lazy"
-        />
-
-        <!-- Nota 4: "Sin aditivos ni azúcar" - Izquierda abajo -->
-        <img
-          src="/images/sin-aditivos.png"
-          alt="Sin aditivos ni azúcar"
-          class="hero__note hero__note--4"
-          loading="lazy"
-        />
-      </div>
     </div>
 
     <!-- Botón implementado con variante yellow -->
@@ -71,26 +36,12 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
   function initHeroAnimation() {
     const tl = gsap.timeline({ delay: 0.2 })
 
-    // 1. H1 principal
+    // H1 principal
     tl.from('.hero__title', {
       opacity: 0,
       y: 30,
       duration: 1,
       ease: 'power2.out',
     })
-
-    // 2. Notas PNG aparecen secuencialmente
-    tl.from(
-      '.hero__note',
-      {
-        opacity: 0,
-        scale: 0.8,
-        y: 20,
-        duration: 0.6,
-        ease: 'back.out(1.2)',
-        stagger: 0.3,
-      },
-      '-=0.5'
-    )
   }
 </script>

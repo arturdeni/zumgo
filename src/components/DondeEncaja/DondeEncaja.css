@@ -2,7 +2,6 @@
 
 .donde-encaja {
   min-height: 100vh;
-  background-color: var(--color-cream);
   padding: var(--space-20) 0;
 
   /* Centrado del contenido */
@@ -23,7 +22,7 @@
 }
 
 .donde-encaja__title {
-  color: var(--color-orange);
+  color: var(--color-forest);
   text-align: center;
   margin-bottom: var(--space-16);
   max-width: 800px;
@@ -77,7 +76,7 @@
 }
 
 .donde-encaja__item-description {
-  color: var(--color-orange);
+  color: var(--color-white);
   margin-bottom: 0;
   max-width: 200px; /* Ancho máximo para mejor lectura */
 }

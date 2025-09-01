@@ -4,20 +4,9 @@
   width: 100%;
 }
 
-/* === HEADER CON IMAGEN DE FONDO === */
-.estadisticas__header {
-  width: 100%;
-  height: 150px;
-  background-image: url('/images/estadisticas-header.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 /* === CONTENIDO PRINCIPAL === */
 .estadisticas__content {
   width: 100%;
-  background-color: var(--color-cream);
   padding: var(--space-16) 0;
   display: flex;
   flex-direction: column;
@@ -25,7 +14,7 @@
 }
 
 .estadisticas__title {
-  color: var(--color-orange);
+  color: var(--color-forest);
   text-align: center;
   margin-top: var(--space-12);
   margin-bottom: var(--space-16);

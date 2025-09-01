@@ -22,7 +22,7 @@ html {
 
 body {
   color: var(--color-gray-800);
-  background-color: var(--color-cream);
+  background-color: var(--color-mint);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;

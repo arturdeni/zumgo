@@ -34,7 +34,7 @@
 
 .maquina__title {
   color: var(--color-forest);
-  flex: 0 0 65%; /* Máximo 55% del ancho */
+  flex: 0 0 65%; /* Máximo 65% del ancho */
   max-width: 65%;
   margin-bottom: 0; /* Eliminar margen bottom por defecto */
 }
@@ -49,23 +49,55 @@
   padding-top: var(--space-4); /* Pequeño espaciado desde el título */
 }
 
+/* === BOTTOM CONTAINER (imagen + features) === */
+.maquina__bottom-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 /* === IMAGE CONTAINER === */
 .maquina__image-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  flex: 1;
-  margin-left: var(--space-32);
-  margin-bottom: var(
-    --space-32
-  ); /* Espacio inferior para separar de otros contenidos */
+  flex: 0 0 auto;
 }
 
 .maquina__image {
   max-width: 100%;
-  height: 800px;
+  height: 750px;
   object-fit: contain;
+}
+
+/* === FEATURES CONTAINER === */
+.maquina__features-container {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  padding-top: 300px;
+}
+
+.maquina__features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.maquina__feature-item {
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-h3-rem);
+  line-height: var(--line-height-paragraph);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-forest);
+  /* Para animación GSAP */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.maquina__feature-item:last-child {
+  margin-bottom: 0;
 }
 
 /* === RESPONSIVE === */
@@ -95,26 +127,39 @@
     max-width: 100%;
   }
 
+  .maquina__bottom-container {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
   .maquina__image-container {
-    margin-bottom: var(--space-2);
-    margin-left: 0;
+    order: 1; /* La imagen va primero en móvil */
+  }
+
+  .maquina__features-container {
+    order: 2; /* Las features van después en móvil */
+    padding-top: 0;
+    text-align: center;
   }
 
   .maquina__image {
     max-height: 500px;
-    content: url('/images/maquina-vending-mobile.webp');
-    margin-top: var(--space-16);
+  }
+
+  .maquina__feature-item {
+    text-align: center;
   }
 }
 
 /* === TABLET === */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .maquina__text-container {
-    gap: var(--space-6);
-  }
-
   .maquina__title {
     flex: 0 0 50%; /* Ligeramente menos ancho en tablet */
     max-width: 50%;
+  }
+
+  .maquina__image {
+    height: 600px;
   }
 }

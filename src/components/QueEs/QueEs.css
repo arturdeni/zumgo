@@ -40,20 +40,6 @@
   font-weight: var(--font-weight-bold);
 }
 
-.que-es__note {
-  margin-top: var(--space-10);
-  color: var(--color-forest);
-}
-
-.que-es__note-text {
-  font-family: var(--font-family-emilia);
-  font-size: var(--font-size-h5);
-  font-weight: 500;
-  fill: var(--color-forest);
-  text-anchor: middle; /* Centra horizontalmente */
-  dominant-baseline: middle; /* Centra verticalmente */
-}
-
 /* === RESPONSIVE === */
 @media (max-width: 767px) {
   .que-es__content {

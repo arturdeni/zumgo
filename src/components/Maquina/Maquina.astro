@@ -18,16 +18,72 @@
       </p>
     </div>
 
-    <div class="maquina__image-container">
-      <img
-        src="/images/maquina-vending.webp"
-        alt="Máquina Zumgo de zumo fresco"
-        class="maquina__image"
-        loading="lazy"
-      />
+    <div class="maquina__bottom-container">
+      <div class="maquina__image-container">
+        <img
+          src="/images/maquina-vending.webp"
+          alt="Máquina Zumgo de zumo fresco"
+          class="maquina__image"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="maquina__features-container">
+        <ul class="maquina__features-list" id="maquina-features-list">
+          <li class="maquina__feature-item">PREPARADO AL MOMENTO</li>
+          <li class="maquina__feature-item">300 ML EN 45 SEGUNDOS</li>
+          <li class="maquina__feature-item">FRUTA REFRIGERADA A 4°C</li>
+          <li class="maquina__feature-item">
+            ZUMO 100% NATURAL, SIN CONSERVANTES
+          </li>
+          <li class="maquina__feature-item">CONTACTLESS Y SIN ESPERAS</li>
+          <li class="maquina__feature-item">PANTALLA TÁCTIL</li>
+          <li class="maquina__feature-item">
+            MÁQUINAS LIMPIAS, SOSTENIBLES Y AUTÓNOMAS
+          </li>
+          <li class="maquina__feature-item">PRECIO COMPETITIVO</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Script de animación GSAP -->
+<script>
+  // Importar GSAP globalmente disponible
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  // Registrar el plugin ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Esperar a que el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function () {
+    // Buscar los elementos del listado
+    const featuresList = document.getElementById('maquina-features-list')
+    const featureItems = featuresList.querySelectorAll('.maquina__feature-item')
+
+    // Estado inicial: ocultos
+    gsap.set(featureItems, {
+      opacity: 0,
+      y: 20,
+    })
+
+    // Animación secuencial cuando aparece en el viewport
+    gsap.to(featureItems, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.1, // Cada elemento aparece 0.1s después del anterior
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: featuresList,
+        start: 'top 80%', // Inicia cuando está 80% visible
+        once: true, // Solo se ejecuta una vez
+      },
+    })
+  })
+</script>
 
 <style>
   @import url('./Maquina.css');

@@ -1,7 +1,6 @@
 /* ===== CONTACT SECTION ===== */
 
 .contact {
-  background-color: var(--color-cream);
   padding: var(--space-20) 0;
   scroll-margin-top: 120px; /* Para navegación */
 }
@@ -88,8 +87,8 @@
   background-color: rgba(255, 168, 54, 0.9);
   color: white;
   font-family: var(--font-family-helvetica-regular);
-  font-size: var(--font-size-h4-rem);
-  line-height: var(--line-height-h4);
+  font-size: var(--font-size-paragraph-rem);
+  line-height: var(--line-height-paragraph);
   transition: all var(--transition-base);
 }
 
@@ -152,7 +151,6 @@
 
   .contact__input {
     padding: var(--space-4) var(--space-5);
-    font-size: 1rem; /* Ligeramente más pequeño en móvil */
   }
 
   .contact__title {
