@@ -1,11 +1,16 @@
 ---
-// Hero.astro - Sección Hero principal con notas en PNG
+// Hero.astro - Sección Hero principal con textos laterales H3
 import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
 ---
 
 <section class="hero" id="inicio">
   <div class="hero__content">
-    <!-- Contenedor relativo para las notas -->
+    <!-- Texto lateral izquierdo -->
+    <h3 class="hero__lateral-text hero__lateral-text--left">
+      ZUMO NATURAL<br />RECIÉN EXPRIMIDO
+    </h3>
+
+    <!-- Contenedor principal -->
     <div class="hero__title-container">
       <h1 class="hero__title">
         El zumo <br class="hero__title-break" />que esperas, <br
@@ -13,6 +18,9 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
         />sin esperas
       </h1>
     </div>
+
+    <!-- Texto lateral derecho -->
+    <h3 class="hero__lateral-text hero__lateral-text--right">100% NARANJA</h3>
 
     <!-- Botón implementado con variante yellow -->
     <ZumgoButton variant="yellow" href="#contacto">
@@ -25,7 +33,7 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
   @import url('./Hero.css');
 </style>
 
-<!-- Script para animaciones GSAP simplificado -->
+<!-- Script para animaciones GSAP con mask reveal de derecha a izquierda -->
 <script>
   import { gsap } from 'gsap'
 
@@ -36,12 +44,45 @@ import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
   function initHeroAnimation() {
     const tl = gsap.timeline({ delay: 0.2 })
 
+    // Estado inicial: textos fuera de pantalla
+    gsap.set('.hero__lateral-text--left', {
+      y: -100, // Desde arriba
+      opacity: 0,
+    })
+
+    gsap.set('.hero__lateral-text--right', {
+      y: 100, // Desde abajo
+      opacity: 0,
+    })
+
     // H1 principal
     tl.from('.hero__title', {
       opacity: 0,
       y: 30,
       duration: 1,
-      ease: 'power2.out',
+      ease: 'power3.out',
     })
+      // Texto izquierdo entra desde arriba
+      .to(
+        '.hero__lateral-text--left',
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'sine.out',
+        },
+        '-=0.3'
+      )
+      // Texto derecho entra desde abajo
+      .to(
+        '.hero__lateral-text--right',
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'sine.out', // Sin rebote
+        },
+        '-=0.6'
+      )
   }
 </script>

@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .hero__content {
@@ -21,9 +22,10 @@
   max-width: var(--container-max-width);
   padding: 0 var(--container-padding);
   width: 100%;
+  position: relative;
 }
 
-/* === CONTENEDOR DEL TÍTULO CON NOTAS === */
+/* === CONTENEDOR DEL TÍTULO === */
 .hero__title-container {
   position: relative;
   display: inline-block;
@@ -36,4 +38,40 @@
   margin: 0;
   position: relative;
   z-index: 1;
+}
+
+/* === TEXTOS LATERALES H3 === */
+.hero__lateral-text {
+  position: absolute;
+  color: var(--color-yellow);
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-h3-rem);
+  line-height: calc(25 / 20);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Rotación vertical */
+  writing-mode: sideways-lr;
+  text-orientation: mixed;
+  transform: translateY(-50%);
+}
+
+.hero__lateral-text--left {
+  left: 2%;
+  top: 0;
+}
+
+.hero__lateral-text--right {
+  right: 2%;
+  top: 60%;
+}
+
+/* === RESPONSIVE === */
+
+/* Tablet y móvil - ocultar textos laterales para no saturar */
+@media (max-width: 1023px) {
+  .hero__lateral-text {
+    display: none;
+  }
 }

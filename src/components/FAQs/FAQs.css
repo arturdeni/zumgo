@@ -27,7 +27,7 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  height: 400px; /* Altura fija para las imágenes */
+  height: 370px; /* Altura fija para las imágenes */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,6 +35,7 @@
 
 .faqs__image img {
   width: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
 }
