@@ -9,28 +9,7 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
-
-  /* Imagen de fondo del contenedor interno */
-  background-image: url('/images/contact-background.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: var(--radius-3xl);
   overflow: hidden;
-
-  /* Efecto overlay para mejorar legibilidad */
-  position: relative;
-}
-
-.contact__container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1); /* Overlay oscuro muy sutil */
-  z-index: 1;
 }
 
 .contact__content {
@@ -45,7 +24,7 @@
 
 /* === TÍTULO === */
 .contact__title {
-  color: var(--color-white);
+  color: var(--color-forest);
   text-align: center;
   margin-bottom: var(--space-12);
   max-width: 700px;
@@ -83,8 +62,8 @@
   width: 100%;
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 168, 54, 0.9);
-  background-color: rgba(255, 168, 54, 0.9);
+  border: 1px solid var(--color-forest);
+  background-color: var(--color-forest);
   color: white;
   font-family: var(--font-family-helvetica-regular);
   font-size: var(--font-size-paragraph-rem);
@@ -136,7 +115,7 @@
   }
 
   .contact__content {
-    padding: var(--space-12) var(--space-6);
+    padding: 0;
   }
 
   /* En móvil todos los campos ocupan todo el ancho */
