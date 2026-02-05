@@ -1,0 +1,81 @@
+/* ===== CTA SECTION ===== */
+
+.cta {
+  position: relative;
+  height: 400px;
+  background-color: var(--color-forest);
+  overflow: hidden; /* Para que los elementos flotantes no generen scroll */
+
+  /* Centrado del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+  z-index: 10; /* Por encima de los elementos flotantes */
+  position: relative;
+}
+
+.cta__title {
+  color: var(--color-mint);
+  margin-bottom: var(--space-12);
+}
+
+/* === ELEMENTOS FLOTANTES === */
+.cta__floating {
+  position: absolute;
+  will-change: transform; /* Optimización para animaciones */
+  pointer-events: none; /* No interferir con interacciones */
+  z-index: 5; /* Por debajo del contenido */
+}
+
+.cta__floating img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-xl);
+}
+
+/* Naranjas izquierda */
+.cta__floating--oranges-left {
+  top: 20%;
+  left: 8%;
+  width: min(160px, 15vw);
+}
+
+/* Naranjas derecha */
+.cta__floating--oranges-right {
+  bottom: 20%;
+  right: 8%;
+  width: min(190px, 18vw);
+}
+
+/* === RESPONSIVE === */
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cta {
+    height: 320px; /* Más compacto en móvil */
+  }
+
+  .cta__content {
+    padding: 0 var(--space-4);
+  }
+
+  .cta__title {
+    margin-bottom: var(--space-6);
+  }
+
+  .cta__floating {
+    display: none; /* Ocultar elementos flotantes en móvil */
+  }
+}

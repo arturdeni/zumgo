@@ -1,0 +1,265 @@
+---
+// CookieModal.astro - Modal sutil y elegante para Zumgo
+---
+
+<div id="cookie-modal-overlay" class="cookie-modal-overlay">
+  <div class="cookie-modal">
+    <div class="cookie-modal__content">
+      <h3 class="cookie-modal__title">Cookies</h3>
+      <p class="cookie-modal__text">
+        Usamos cookies esenciales y de Mapbox para mostrarte nuestras
+        ubicaciones.
+        <a
+          href="#"
+          onclick="openLegalModal('cookies')"
+          class="cookie-modal__link">Más info</a
+        >
+      </p>
+    </div>
+
+    <div class="cookie-modal__actions">
+      <button
+        type="button"
+        class="cookie-btn cookie-btn--secondary"
+        onclick="handleCookieChoice(false)"
+      >
+        Solo esenciales
+      </button>
+
+      <button
+        type="button"
+        class="cookie-btn cookie-btn--primary"
+        onclick="handleCookieChoice(true)"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-modal-overlay {
+    position: fixed;
+    will-change: transform;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .cookie-modal-overlay.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .cookie-modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease-out;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .cookie-modal__content {
+    padding: 24px 24px 16px;
+  }
+
+  .cookie-modal__title {
+    margin: 0 0 12px 0;
+    color: #1f2937;
+    font-family: var(--font-helvetica-bold-condensed, system-ui);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .cookie-modal__text {
+    margin: 0;
+    color: #6b7280;
+    font-family: var(--font-helvetica-regular, system-ui);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .cookie-modal__link {
+    color: var(--color-forest, #09432e);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .cookie-modal__link:hover {
+    text-decoration: underline;
+  }
+
+  .cookie-modal__actions {
+    padding: 0 24px 24px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .cookie-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-helvetica-regular, system-ui);
+    background: white;
+  }
+
+  .cookie-btn--secondary {
+    color: #6b7280;
+    border-color: #d1d5db;
+  }
+
+  .cookie-btn--secondary:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+  }
+
+  .cookie-btn--primary {
+    background: var(--color-forest, #09432e);
+    color: white;
+    border-color: var(--color-forest, #09432e);
+  }
+
+  .cookie-btn--primary:hover {
+    background: #0d5538;
+    border-color: #0d5538;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .cookie-modal-overlay {
+      padding: 16px;
+      align-items: flex-end;
+    }
+
+    .cookie-modal {
+      max-width: none;
+    }
+
+    .cookie-modal__content {
+      padding: 20px 20px 12px;
+    }
+
+    .cookie-modal__actions {
+      padding: 0 20px 20px;
+      flex-direction: column;
+    }
+
+    .cookie-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  class CookieModal {
+    constructor() {
+      this.overlay = null
+      this.init()
+    }
+
+    init() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.setup())
+      } else {
+        this.setup()
+      }
+    }
+
+    setup() {
+      this.overlay = document.getElementById('cookie-modal-overlay')
+      if (!this.overlay) return
+
+      window.handleCookieChoice = (accepted) => this.handleChoice(accepted)
+
+      // Mostrar modal si no hay consentimiento
+      const consent = localStorage.getItem('zumgo-cookies')
+      if (!consent) {
+        setTimeout(() => this.showModal(), 1500)
+      }
+
+      // Cerrar con Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isVisible()) {
+          this.handleChoice(false)
+        }
+      })
+
+      // Cerrar al hacer clic fuera
+      this.overlay.addEventListener('click', (e) => {
+        if (e.target === this.overlay) {
+          this.handleChoice(false)
+        }
+      })
+
+      // Prevenir cierre al hacer clic dentro
+      const modal = this.overlay.querySelector('.cookie-modal')
+      if (modal) {
+        modal.addEventListener('click', (e) => e.stopPropagation())
+      }
+    }
+
+    showModal() {
+      if (this.overlay) {
+        this.overlay.classList.add('show')
+      }
+    }
+
+    hideModal() {
+      if (this.overlay) {
+        this.overlay.classList.remove('show')
+      }
+    }
+
+    isVisible() {
+      return this.overlay && this.overlay.classList.contains('show')
+    }
+
+    handleChoice(accepted) {
+      localStorage.setItem('zumgo-cookies', accepted ? 'all' : 'essential')
+      this.hideModal()
+
+      if (accepted) {
+        console.log('✅ Cookies aceptadas')
+      } else {
+        console.log('⚪ Solo cookies esenciales')
+      }
+    }
+  }
+
+  new CookieModal()
+</script>

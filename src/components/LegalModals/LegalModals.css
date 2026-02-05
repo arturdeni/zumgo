@@ -1,0 +1,178 @@
+/* LegalModals.css */
+
+.legal-modal-overlay {
+  display: none;
+  position: fixed;
+  will-change: transform;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+}
+
+.legal-modal-overlay.active {
+  display: flex;
+  animation: legalModalFadeIn 0.3s ease;
+}
+
+.legal-modal {
+  display: none;
+  background: white;
+  border-radius: 12px;
+  max-width: 800px;
+  max-height: 90vh;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: legalModalSlideUp 0.3s ease;
+}
+
+.legal-modal.active {
+  display: block;
+}
+
+.legal-modal__header {
+  background: var(--color-forest, #09432e);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.legal-modal__header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-family: var(--font-coolvetica, system-ui);
+}
+
+.legal-modal__close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.legal-modal__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.legal-modal__content {
+  padding: 30px;
+  overflow-y: auto;
+  max-height: calc(90vh - 80px);
+  font-family: var(--font-helvetica-regular, system-ui);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.legal-modal__content h3 {
+  color: var(--color-forest, #09432e);
+  margin: 25px 0 15px 0;
+  font-size: 1.2rem;
+  font-family: var(--font-helvetica-bold-condensed, system-ui);
+}
+
+.legal-modal__content h3:first-child {
+  margin-top: 0;
+}
+
+.legal-modal__content p {
+  margin-bottom: 15px;
+  color: #333;
+  text-align: justify;
+}
+
+.legal-modal__content ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.legal-modal__content li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.legal-modal__contact {
+  background: var(--color-cream, #fce2b7);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid var(--color-forest, #09432e);
+}
+
+/* Animaciones */
+@keyframes legalModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes legalModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .legal-modal__content {
+    padding: 20px;
+  }
+
+  .legal-modal__header h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Estados de accesibilidad */
+.legal-modal__close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Mejoras de UX */
+.legal-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.legal-modal__content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.legal-modal__content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.legal-modal__content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

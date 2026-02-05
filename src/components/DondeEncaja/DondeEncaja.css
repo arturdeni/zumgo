@@ -1,0 +1,149 @@
+/* ===== DONDE ENCAJA SECTION ===== */
+
+.donde-encaja {
+  min-height: 100vh;
+  padding: var(--space-20) 0;
+
+  /* Centrado del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: 120px; /* Para navegación */
+}
+
+.donde-encaja__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.donde-encaja__title {
+  color: var(--color-forest);
+  text-align: center;
+  margin-bottom: var(--space-16);
+  max-width: 800px;
+}
+
+/* === GRID DE UBICACIONES === */
+.donde-encaja__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas por defecto */
+  grid-template-rows: repeat(2, 1fr); /* 2 filas por defecto */
+  gap: var(--space-12);
+  width: 100%;
+  max-width: 1000px; /* Ancho máximo del grid */
+}
+
+/* === ITEMS INDIVIDUALES === */
+.donde-encaja__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-8);
+  transition: transform var(--transition-base);
+}
+
+.donde-encaja__item:hover {
+  transform: translateY(-5px);
+}
+
+/* === ICONOS === */
+.donde-encaja__icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donde-encaja__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* === TÍTULOS Y TEXTO === */
+.donde-encaja__item-title {
+  color: var(--color-forest);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-bold);
+}
+
+.donde-encaja__item-description {
+  color: var(--color-white);
+  margin-bottom: 0;
+  max-width: 200px; /* Ancho máximo para mejor lectura */
+}
+
+/* === RESPONSIVE === */
+
+/* Cambio a 2x3 cuando no caben 3 columnas cómodamente */
+@media (max-width: 1023px) {
+  .donde-encaja__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    grid-template-rows: repeat(3, 1fr); /* 3 filas */
+    gap: var(--space-10);
+    max-width: 600px; /* Reducir ancho máximo */
+  }
+
+  .donde-encaja__icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Mobile - mantener 2x3 pero más compacto */
+@media (max-width: 767px) {
+  .donde-encaja {
+    padding: var(--space-16) 0;
+  }
+
+  .donde-encaja__content {
+    padding: 0 var(--space-4);
+  }
+
+  .donde-encaja__title {
+    margin-bottom: var(--space-12);
+  }
+
+  .donde-encaja__grid {
+    gap: var(--space-8) 0;
+    max-width: 100%; /* Usar todo el ancho disponible */
+  }
+
+  .donde-encaja__item {
+    padding: var(--space-6);
+  }
+
+  .donde-encaja__icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--space-4);
+  }
+
+  .donde-encaja__item-description {
+    max-width: 160px; /* Reducir ancho en móvil */
+  }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 480px) {
+  .donde-encaja__grid {
+    gap: var(--space-6) 0;
+  }
+
+  .donde-encaja__item {
+    padding: var(--space-4);
+  }
+
+  .donde-encaja__icon {
+    width: 50px;
+    height: 50px;
+  }
+}

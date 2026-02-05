@@ -1,0 +1,160 @@
+/* ===== ESTADISTICAS SECTION ===== */
+
+.estadisticas {
+  width: 100%;
+}
+
+/* === CONTENIDO PRINCIPAL === */
+.estadisticas__content {
+  width: 100%;
+  padding: var(--space-16) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.estadisticas__title {
+  color: var(--color-forest);
+  text-align: center;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-16);
+  max-width: 900px;
+  padding: 0 var(--container-padding);
+}
+
+/* === GRID DE BLOQUES === */
+.estadisticas__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  max-width: var(--container-max-width);
+  width: 100%;
+  padding: 0 var(--container-padding);
+  margin: var(--space-16) 0 var(--space-32);
+}
+
+/* === BASE PARA TODOS LOS BLOQUES === */
+.estadisticas__block {
+  aspect-ratio: 0.8; /* Bloques ligeramente rectangulares */
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* === VARIANTES DE BLOQUES === */
+
+/* Bloque 1: Imagen de fondo */
+.estadisticas__block--image1 {
+  background-image: url('/images/estadisticas-naranjas.jpg'); /* Ruta a imagen de naranjas */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Bloque 2: Fondo amarillo */
+.estadisticas__block--yellow {
+  background-color: var(--color-yellow);
+}
+
+/* Bloque 3: Imagen de fondo (textura naranja) */
+.estadisticas__block--image2 {
+  background-image: url('/images/estadisticas-textura.jpg'); /* Ruta a imagen de textura */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Bloque 4: Fondo forest */
+.estadisticas__block--forest {
+  background-color: var(--color-forest);
+}
+
+/* === TEXTOS === */
+.estadisticas__text {
+  margin-bottom: 0;
+}
+
+/* Colores de texto */
+.estadisticas__text--white {
+  color: var(--color-white);
+}
+
+.estadisticas__text--forest {
+  color: var(--color-forest);
+}
+
+.estadisticas__text--orange {
+  color: var(--color-orange);
+}
+
+/* Highlight en mint */
+.estadisticas__highlight {
+  color: var(--color-mint); /* Verde para destacar dentro del texto orange */
+}
+
+/* Highlight en forest */
+.estadisticas__highlight-forest {
+  color: var(--color-forest);
+  font-weight: bold;
+}
+
+/* === RESPONSIVE === */
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .estadisticas__grid {
+    gap: var(--space-4);
+  }
+
+  .estadisticas__block {
+    padding: var(--space-4);
+  }
+
+  .estadisticas__header {
+    height: 250px;
+  }
+}
+
+/* Mobile - Grid 2x2 */
+@media (max-width: 767px) {
+  .estadisticas__content {
+    padding: var(--space-12) 0;
+  }
+
+  .estadisticas__title {
+    margin-bottom: var(--space-12);
+    padding: 0 var(--space-4);
+  }
+
+  .estadisticas__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en mobile */
+    grid-template-rows: repeat(2, 1fr); /* 2 filas en mobile */
+    gap: var(--space-4);
+    padding: 0 var(--space-4);
+  }
+
+  .estadisticas__text {
+    font-size: var(--font-size-paragraph-rem);
+    line-height: var(--line-height-paragraph);
+  }
+
+  .estadisticas__block {
+    padding: var(--space-4);
+  }
+
+  .estadisticas__header {
+    height: 90px; /* Reducir altura en mobile */
+  }
+}
+
+/* Mobile muy pequeño */
+@media (max-width: 480px) {
+  .estadisticas__block {
+    padding: var(--space-3);
+  }
+}

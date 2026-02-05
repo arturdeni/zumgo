@@ -1,0 +1,54 @@
+/* ===== QUE ES SECTION ===== */
+
+.que-es {
+  /* Altura completa del viewport */
+  height: 110vh;
+  background-color: var(--color-mint);
+
+  padding-top: var(--space-20);
+
+  /* Centrado del contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.que-es__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.que-es__title {
+  color: var(--color-forest);
+  max-width: 800px; /* Ancho máximo para el título */
+  margin-bottom: var(--space-10);
+}
+
+.que-es__description {
+  color: var(--color-white);
+  max-width: 900px; /* Ancho máximo para el texto */
+}
+
+.que-es__highlight {
+  color: var(--color-forest);
+  font-weight: var(--font-weight-bold);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .que-es__content {
+    padding: 0 var(--space-4);
+  }
+
+  .que-es__description {
+    max-width: 100%; /* Utilizar todo el ancho disponible en móvil */
+  }
+
+  /* El H2 ya se reduce automáticamente en global.css */
+}

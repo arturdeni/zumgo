@@ -1,0 +1,196 @@
+/* ===== ESTILOS GLOBALES ZUMGO ===== */
+
+/* Importar variables */
+@import './variables.css';
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML y Body */
+html {
+  font-family: var(--font-family-helvetica-regular);
+  font-size: 16px; /* Base para cálculos rem */
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  color: var(--color-gray-800);
+  background-color: var(--color-mint);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+}
+
+/* Tipografía base con fuentes y tamaños específicos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-family: var(--font-family-coolvetica);
+  font-size: var(--font-size-h1-rem);
+  line-height: calc(110 / 120); /* 110/120 ratio */
+}
+
+h2 {
+  font-family: var(--font-family-coolvetica);
+  font-size: var(--font-size-h2-rem);
+  line-height: calc(76 / 80); /* 76/80 ratio */
+}
+
+h3 {
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-h3-rem);
+  line-height: calc(25 / 20); /* 25/20 ratio */
+}
+
+h4 {
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-h4-rem);
+  line-height: calc(22 / 20); /* 22/20 ratio */
+}
+
+h5 {
+  font-family: var(--font-family-emilia);
+  font-size: var(--font-size-h5-rem);
+  line-height: calc(31 / 30); /* 31/30 ratio */
+}
+
+p {
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-paragraph-rem);
+  line-height: calc(22 / 20); /* 22/20 ratio */
+  margin-bottom: var(--space-4);
+}
+
+/* Clases específicas para textos especiales */
+.text-special {
+  font-family: var(--font-family-helvetica-regular);
+  font-size: var(--font-size-text1-rem);
+  line-height: calc(24 / 25); /* 24/25 ratio */
+}
+
+.menu-text {
+  font-family: var(--font-family-helvetica-condensed);
+  font-size: var(--font-size-menu-rem);
+  line-height: 1; /* 20/20 ratio */
+}
+
+/* Enlaces */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Listas */
+ul,
+ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+/* Imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Botones base */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-base);
+}
+
+/* Formularios */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-base);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Clases utilitarias comunes */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Utilidades responsive */
+@media (max-width: 767px) {
+  html,
+  body {
+    scroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Simplificar elementos flotantes en móvil */
+  .floating-element {
+    animation-play-state: paused !important;
+    will-change: auto;
+  }
+
+  /* Escala tipográfica responsive (reducir tamaños grandes) */
+  h1 {
+    font-size: 4rem; /* Reducir H1 para móvil */
+    line-height: calc(110 / 120);
+  }
+  h2 {
+    font-size: 2.5rem; /* Reducir H2 para móvil */
+    line-height: calc(76 / 80);
+  }
+  /* H3, H4, H5 mantienen su tamaño por ser más pequeños */
+}

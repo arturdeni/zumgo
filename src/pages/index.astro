@@ -1,0 +1,47 @@
+---
+// index.astro - Página principal de Zumgo
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header/Header.astro'
+import Hero from '../components/Hero/Hero.astro'
+import FloatingElements from '../components/FloatingElements/FloatingElements.astro'
+import QueEs from '../components/QueEs/QueEs.astro'
+import Maquina from '../components/Maquina/Maquina.astro'
+import Estadisticas from '../components/Estadisticas/Estadisticas.astro'
+import CTA from '../components/CTA/CTA.astro'
+import DondeEncaja from '../components/DondeEncaja/DondeEncaja.astro'
+import FAQs from '../components/FAQs/FAQs.astro'
+import Ubicaciones from '../components/Ubicaciones/Ubicaciones.astro'
+import Contact from '../components/Contact/Contact.astro'
+import Footer from '../components/Footer/Footer.astro'
+---
+
+<Layout
+  title="Zumgo - El zumo que esperas, sin esperas"
+  description="Descubre los mejores zumos naturales sin aditivos. Calidad premium que puedes sentir en cada sorbo."
+>
+  <Header />
+
+  <main>
+    <Hero />
+
+    <FloatingElements />
+
+    <QueEs />
+
+    <Maquina />
+
+    <Estadisticas />
+
+    <CTA />
+
+    <DondeEncaja />
+
+    <FAQs />
+
+    <Ubicaciones />
+
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,494 @@
+---
+// LegalModals.astro - Componente para mostrar información legal
+export interface Props {
+  companyName?: string
+  email?: string
+  phone?: string
+  address?: string
+  nif?: string
+  website?: string
+}
+
+const {
+  companyName = '[Tu empresa]',
+  email = '[tu email]',
+  phone = '[tu teléfono]',
+  address = '[tu dirección]',
+  nif = '[tu NIF/CIF]',
+  website = '[tu sitio web]',
+} = Astro.props
+---
+
+<!-- Overlay del modal -->
+<div id="legal-modal-overlay" class="legal-modal-overlay">
+  <!-- Modal Condiciones Generales -->
+  <div id="legal-modal-condiciones" class="legal-modal">
+    <div class="legal-modal__header">
+      <h2>Condiciones Generales de Uso</h2>
+      <button class="legal-modal__close" type="button">&times;</button>
+    </div>
+    <div class="legal-modal__content">
+      <h3>1. Objeto y ámbito de aplicación</h3>
+      <p>
+        Las presentes condiciones generales regulan el acceso y uso del sitio
+        web {website}, propiedad de {companyName}.
+      </p>
+      <p>
+        El acceso y uso de este sitio web implica la aceptación expresa y sin
+        reservas de estas condiciones generales.
+      </p>
+
+      <h3>2. Condiciones de acceso y uso</h3>
+      <p>
+        El acceso a este sitio web es gratuito salvo en lo relativo al coste de
+        la conexión a través de la red de telecomunicaciones suministrada por el
+        proveedor de acceso contratado por los usuarios.
+      </p>
+      <p>
+        Los usuarios se comprometen a hacer un uso adecuado de los contenidos y
+        servicios y a no emplearlos para:
+      </p>
+      <ul>
+        <li>
+          Incurrir en actividades ilícitas, ilegales o contrarias a la buena fe
+          y al orden público
+        </li>
+        <li>
+          Difundir contenidos o propaganda de carácter racista, xenófobo,
+          pornográfico-ilegal o de apología del terrorismo
+        </li>
+        <li>Provocar daños en los sistemas físicos y lógicos del sitio web</li>
+        <li>
+          Introducir o difundir virus informáticos o cualesquiera otros sistemas
+          físicos o lógicos
+        </li>
+      </ul>
+
+      <h3>3. Contenidos</h3>
+      <p>
+        Los contenidos del sitio web tienen carácter meramente informativo. {
+          companyName
+        } no se responsabiliza de la veracidad, exactitud o actualización de los
+        contenidos.
+      </p>
+
+      <h3>4. Responsabilidad</h3>
+      <p>
+        {companyName} no se hace responsable de los daños y perjuicios que pudieran
+        derivarse del uso de la información contenida en este sitio web.
+      </p>
+
+      <h3>5. Modificaciones</h3>
+      <p>
+        {companyName} se reserva el derecho de efectuar sin previo aviso las modificaciones
+        que considere oportunas en su sitio web.
+      </p>
+
+      <div class="legal-modal__contact">
+        <strong>Datos de contacto:</strong><br />
+        {companyName}<br />
+        Email: {email}<br />
+        Teléfono: {phone}
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Aviso Legal -->
+  <div id="legal-modal-aviso" class="legal-modal">
+    <div class="legal-modal__header">
+      <h2>Aviso Legal</h2>
+      <button class="legal-modal__close" type="button">&times;</button>
+    </div>
+    <div class="legal-modal__content">
+      <h3>Información del titular</h3>
+      <div class="legal-modal__contact">
+        <strong>Titular del sitio web:</strong>
+        {companyName}<br />
+        <strong>NIF/CIF:</strong>
+        {nif}<br />
+        <strong>Domicilio:</strong>
+        {address}<br />
+        <strong>Email:</strong>
+        {email}<br />
+        <strong>Teléfono:</strong>
+        {phone}
+      </div>
+
+      <h3>Objeto</h3>
+      <p>
+        Este sitio web tiene como objeto proporcionar información sobre los
+        servicios de {companyName}.
+      </p>
+
+      <h3>Condiciones de uso</h3>
+      <p>
+        La utilización del sitio web {website} atribuye la condición de usuario e
+        implica la aceptación plena de todas las cláusulas incluidas en este Aviso
+        Legal.
+      </p>
+
+      <h3>Responsabilidades</h3>
+      <p>
+        El titular del sitio web no se hace responsable de la información
+        publicada en su página web siempre que ésta haya sido manipulada o
+        introducida por un tercero ajeno al mismo.
+      </p>
+
+      <h3>Propiedad intelectual</h3>
+      <p>
+        Todos los contenidos del sitio web, incluyendo sin carácter limitativo,
+        textos, fotografías, gráficos, imágenes, iconos, tecnología, software,
+        así como su diseño gráfico y códigos fuente, constituyen una obra cuya
+        propiedad pertenece a {companyName}.
+      </p>
+
+      <h3>Legislación aplicable</h3>
+      <p>
+        Para la resolución de todas las controversias o cuestiones relacionadas
+        con el presente sitio web o de las actividades en él desarrolladas, será
+        de aplicación la legislación española.
+      </p>
+    </div>
+  </div>
+
+  <!-- Modal Política de Privacidad - VERSIÓN ESPECÍFICA PARA ZUMGO -->
+  <div id="legal-modal-privacidad" class="legal-modal">
+    <div class="legal-modal__header">
+      <h2>Política de Privacidad</h2>
+      <button class="legal-modal__close" type="button">&times;</button>
+    </div>
+    <div class="legal-modal__content">
+      <h3>Responsable del tratamiento</h3>
+      <div class="legal-modal__contact">
+        <strong>Responsable:</strong>
+        {companyName}<br />
+        <strong>Email de contacto:</strong>
+        {email}<br />
+        <strong>Dirección:</strong>
+        {address}
+      </div>
+
+      <h3>¿Qué datos personales recogemos?</h3>
+      <p>
+        Solo recogemos los datos que nos proporcionas voluntariamente cuando:
+      </p>
+      <ul>
+        <li>
+          <strong>Formulario de contacto:</strong> Nombre, email, teléfono (opcional)
+          y mensaje
+        </li>
+        <li>
+          <strong>Comunicaciones:</strong> Datos que nos facilites al contactar con
+          nosotros por email o WhatsApp
+        </li>
+      </ul>
+
+      <p><strong>NO recogemos automáticamente:</strong></p>
+      <ul>
+        <li>Datos de navegación (no usamos Google Analytics)</li>
+        <li>Cookies publicitarias</li>
+        <li>Información de terceros</li>
+      </ul>
+
+      <h3>¿Para qué utilizamos tus datos?</h3>
+      <p>Utilizamos tus datos personales únicamente para:</p>
+      <ul>
+        <li>
+          <strong>Responder a tu consulta:</strong> Contactarte para resolver tus
+          dudas sobre Zumgo
+        </li>
+        <li>
+          <strong>Gestión comercial:</strong> Informarte sobre nuestros servicios
+          si nos lo solicitas
+        </li>
+        <li>
+          <strong>Comunicación:</strong> Enviarte información relevante sobre nuestras
+          máquinas expendedoras
+        </li>
+      </ul>
+
+      <h3>Base jurídica para el tratamiento</h3>
+      <p>Tratamos tus datos basándonos en:</p>
+      <ul>
+        <li>
+          <strong>Tu consentimiento:</strong> Al enviarnos el formulario aceptas
+          que procesemos tus datos
+        </li>
+        <li>
+          <strong>Interés legítimo:</strong> Para responder a tu consulta y gestionar
+          nuestra relación comercial
+        </li>
+      </ul>
+
+      <h3>¿Cuánto tiempo conservamos tus datos?</h3>
+      <ul>
+        <li>
+          <strong>Consultas generales:</strong> 2 años desde el último contacto
+        </li>
+        <li>
+          <strong>Clientes potenciales:</strong> 3 años o hasta que solicites la
+          eliminación
+        </li>
+      </ul>
+
+      <h3>¿Compartimos tus datos con terceros?</h3>
+      <p>
+        <strong>NO vendemos ni compartimos</strong> tus datos personales con terceros,
+        salvo:
+      </p>
+      <ul>
+        <li>
+          <strong>Servicios técnicos:</strong> Nuestro proveedor de hosting para
+          mantener la web funcionando
+        </li>
+        <li>
+          <strong>Obligaciones legales:</strong> Si la ley nos obliga a facilitar
+          información
+        </li>
+      </ul>
+
+      <h3>Tus derechos</h3>
+      <p>Puedes ejercer estos derechos enviando un email a {email}:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Saber qué datos tenemos sobre ti</li>
+        <li><strong>Rectificación:</strong> Corregir datos incorrectos</li>
+        <li>
+          <strong>Supresión:</strong> Eliminar tus datos ("derecho al olvido")
+        </li>
+        <li><strong>Limitación:</strong> Restringir cómo usamos tus datos</li>
+        <li>
+          <strong>Portabilidad:</strong> Recibir tus datos en formato digital
+        </li>
+        <li>
+          <strong>Oposición:</strong> Oponerte al tratamiento de tus datos
+        </li>
+      </ul>
+
+      <h3>Medidas de seguridad</h3>
+      <p>Protegemos tus datos mediante:</p>
+      <ul>
+        <li>Conexión segura HTTPS en todo el sitio</li>
+        <li>Acceso restringido a los datos personales</li>
+        <li>Copias de seguridad cifradas</li>
+      </ul>
+
+      <h3>Transferencias internacionales</h3>
+      <p>
+        Tus datos se almacenan en servidores ubicados en la Unión Europea, por
+        lo que no se realizan transferencias internacionales de datos.
+      </p>
+
+      <div class="legal-modal__contact">
+        <strong>¿Tienes alguna duda sobre el tratamiento de tus datos?</strong
+        ><br />
+        Escríbenos a {email} y te responderemos en máximo 72 horas.
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Política de Cookies - VERSIÓN ESPECÍFICA PARA ZUMGO -->
+  <div id="legal-modal-cookies" class="legal-modal">
+    <div class="legal-modal__header">
+      <h2>Política de Cookies</h2>
+      <button class="legal-modal__close" type="button">&times;</button>
+    </div>
+    <div class="legal-modal__content">
+      <h3>¿Qué son las cookies?</h3>
+      <p>
+        Las cookies son pequeños archivos de texto que los sitios web almacenan
+        en tu dispositivo cuando los visitas. Se utilizan para que el sitio web
+        funcione correctamente y para mejorar tu experiencia de navegación.
+      </p>
+
+      <h3>¿Qué cookies utiliza {website}?</h3>
+
+      <h3>Cookies técnicas (estrictamente necesarias)</h3>
+      <p>
+        Estas cookies son esenciales para que puedas navegar por el sitio web:
+      </p>
+      <ul>
+        <li>
+          <strong>Cookies de sesión:</strong> Mantienen tu sesión activa mientras
+          navegas
+        </li>
+        <li>
+          <strong>Cookies de formulario:</strong> Recuerdan los datos que introduces
+          en nuestro formulario de contacto
+        </li>
+      </ul>
+
+      <h3>Cookies de servicios de mapas (Mapbox)</h3>
+      <p>
+        Utilizamos Mapbox para mostrar la ubicación de nuestras máquinas Zumgo.
+        Este servicio puede establecer las siguientes cookies:
+      </p>
+      <ul>
+        <li>
+          <strong>Mapbox cookies:</strong> Para gestionar la configuración del mapa
+          y mejorar el rendimiento
+        </li>
+        <li>
+          <strong>Cookies de token:</strong> Para autenticar el acceso al servicio
+          de mapas
+        </li>
+        <li>
+          <strong>Finalidad:</strong> Mostrar correctamente nuestro mapa interactivo
+          con las ubicaciones
+        </li>
+      </ul>
+
+      <h3>¿Utilizáis cookies de seguimiento o analytics?</h3>
+      <p>
+        Actualmente NO utilizamos Google Analytics ni otras herramientas de
+        seguimiento, por lo que no se establecen cookies publicitarias o de
+        análisis en tu dispositivo.
+      </p>
+
+      <h3>¿Cómo puedo gestionar las cookies?</h3>
+      <p>
+        Puedes controlar las cookies a través de la configuración de tu
+        navegador:
+      </p>
+      <ul>
+        <li>
+          <strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies
+          y otros datos del sitio
+        </li>
+        <li>
+          <strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y
+          datos del sitio
+        </li>
+        <li>
+          <strong>Safari:</strong> Preferencias → Privacidad → Gestionar datos del
+          sitio web
+        </li>
+        <li>
+          <strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios
+          → Cookies
+        </li>
+      </ul>
+
+      <h3>¿Qué pasa si bloqueo las cookies?</h3>
+      <p>Si bloqueas todas las cookies:</p>
+      <ul>
+        <li>El sitio web seguirá funcionando normalmente</li>
+        <li>El mapa interactivo podría no cargar correctamente</li>
+        <li>
+          Podrías tener que volver a rellenar el formulario de contacto si
+          cambias de página
+        </li>
+      </ul>
+
+      <h3>Actualizaciones de esta política</h3>
+      <p>
+        Esta política de cookies puede actualizarse ocasionalmente. Te
+        recomendamos revisarla periódicamente para estar informado sobre cómo
+        utilizamos las cookies.
+      </p>
+
+      <div class="legal-modal__contact">
+        <strong>¿Tienes dudas sobre nuestras cookies?</strong><br />
+        Contacta con nosotros en: {email}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @import url('./LegalModals.css');
+</style>
+
+<script>
+  class LegalModals {
+    constructor() {
+      this.overlay = null
+      this.currentModal = null
+      this.init()
+    }
+
+    init() {
+      // Esperar a que el DOM esté listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.setup())
+      } else {
+        this.setup()
+      }
+    }
+
+    setup() {
+      this.overlay = document.getElementById('legal-modal-overlay')
+      if (!this.overlay) return
+
+      // Event listeners
+      this.setupCloseEvents()
+      this.setupKeyboardEvents()
+
+      // Hacer la función global para poder usarla en onclick
+      window.openLegalModal = (modalType) => this.openModal(modalType)
+    }
+
+    setupCloseEvents() {
+      // Cerrar al hacer clic en overlay
+      this.overlay.addEventListener('click', (e) => {
+        if (e.target === this.overlay) {
+          this.closeModal()
+        }
+      })
+
+      // Cerrar con botones X
+      const closeButtons = this.overlay.querySelectorAll('.legal-modal__close')
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => this.closeModal())
+      })
+
+      // Prevenir cierre al hacer clic dentro del modal
+      const modals = this.overlay.querySelectorAll('.legal-modal')
+      modals.forEach((modal) => {
+        modal.addEventListener('click', (e) => e.stopPropagation())
+      })
+    }
+
+    setupKeyboardEvents() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.currentModal) {
+          this.closeModal()
+        }
+      })
+    }
+
+    openModal(modalType) {
+      if (!this.overlay) return
+
+      // Ocultar todos los modales
+      const allModals = this.overlay.querySelectorAll('.legal-modal')
+      allModals.forEach((modal) => modal.classList.remove('active'))
+
+      // Mostrar el modal solicitado
+      const targetModal = document.getElementById(`legal-modal-${modalType}`)
+      if (targetModal) {
+        targetModal.classList.add('active')
+        this.overlay.classList.add('active')
+        this.currentModal = modalType
+
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden'
+      }
+    }
+
+    closeModal() {
+      if (!this.overlay) return
+
+      this.overlay.classList.remove('active')
+      const allModals = this.overlay.querySelectorAll('.legal-modal')
+      allModals.forEach((modal) => modal.classList.remove('active'))
+
+      this.currentModal = null
+
+      // Restaurar scroll del body
+      document.body.style.overflow = 'auto'
+    }
+  }
+
+  // Inicializar los modales
+  new LegalModals()
+</script>

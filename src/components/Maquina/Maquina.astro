@@ -1,0 +1,104 @@
+---
+// Maquina.astro - Sección "Máquina"
+---
+
+<section class="maquina">
+  <div class="maquina__content">
+    <div class="maquina__text-container">
+      <h2 class="maquina__title">
+        <span class="maquina__title-white">Zumgo:</span> Zumo fresco.<br />
+        Máquina inteligente.<br />
+        Sabor real.
+      </h2>
+
+      <p class="maquina__description">
+        Más del 50% de lo que comemos son snacks, pero el vending sigue
+        ofreciendo ultraprocesadas. Zumgo responde con una opción natural,
+        rápida y sostenible.
+      </p>
+    </div>
+
+    <div class="maquina__bottom-container">
+      <div class="maquina__image-container">
+        <img
+          src="/images/maquina-vending.webp"
+          alt="Máquina Zumgo de zumo fresco"
+          class="maquina__image"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="maquina__features-container">
+        <ul class="maquina__features-list" id="maquina-features-list">
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">PREPARADO AL MOMENTO</span>
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">300 ML EN 45 SEGUNDOS</span>
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">FRUTA REFRIGERADA A 4°C</span>
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text"
+              >ZUMO 100% NATURAL, SIN CONSERVANTES</span
+            >
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">CONTACTLESS Y SIN ESPERAS</span>
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">PANTALLA TÁCTIL</span>
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text"
+              >MÁQUINAS LIMPIAS, SOSTENIBLES Y AUTÓNOMAS</span
+            >
+          </li>
+          <li class="maquina__feature-item">
+            <span class="maquina__feature-text">PRECIO COMPETITIVO</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script de animación GSAP -->
+<script>
+  // Importar GSAP globalmente disponible
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  // Registrar el plugin ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Esperar a que el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function () {
+    // Buscar los elementos del listado
+    const featuresList = document.getElementById('maquina-features-list')
+    const featureTexts = featuresList.querySelectorAll('.maquina__feature-text')
+
+    // Estado inicial: textos debajo de la máscara
+    gsap.set(featureTexts, {
+      y: '100%',
+    })
+
+    // Animación mask reveal cuando aparece en el viewport
+    gsap.to(featureTexts, {
+      y: '0%',
+      duration: 0.8,
+      stagger: 0.15, // Cada elemento aparece 0.15s después del anterior
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: featuresList,
+        start: 'top 80%', // Inicia cuando está 80% visible
+        once: true, // Solo se ejecuta una vez
+      },
+    })
+  })
+</script>
+
+<style>
+  @import url('./Maquina.css');
+</style>

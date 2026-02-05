@@ -1,0 +1,101 @@
+---
+// Contact.astro - Componente de formulario de contacto con EmailJS
+import ZumgoButton from '../ZumgoButton/ZumgoButton.astro'
+---
+
+<section class="contact" id="contacto">
+  <div class="contact__container">
+    <div class="contact__content">
+      <h2 class="contact__title">¿Te unes al movimiento Zumgo?</h2>
+
+      <form class="contact__form" id="contactForm">
+        <div class="contact__form-group contact__form-group--row">
+          <div class="contact__form-field">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre*"
+              required
+              class="contact__input"
+            />
+          </div>
+          <div class="contact__form-field">
+            <input
+              type="text"
+              id="apellidos"
+              name="apellidos"
+              placeholder="Apellidos*"
+              required
+              class="contact__input"
+            />
+          </div>
+        </div>
+
+        <div class="contact__form-group contact__form-group--row">
+          <div class="contact__form-field">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email*"
+              required
+              class="contact__input"
+            />
+          </div>
+          <div class="contact__form-field">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="Teléfono"
+              class="contact__input"
+            />
+          </div>
+        </div>
+
+        <div class="contact__form-group">
+          <div class="contact__form-field">
+            <input
+              type="text"
+              id="motivo"
+              name="motivo"
+              placeholder="Motivo"
+              class="contact__input"
+            />
+          </div>
+        </div>
+
+        <div class="contact__form-group">
+          <div class="contact__form-field">
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              placeholder="Mensaje"
+              rows="5"
+              class="contact__input contact__textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="contact__form-submit">
+          <ZumgoButton variant="forest" type="submit"> Enviar </ZumgoButton>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('./Contact.css');
+</style>
+
+<!-- EmailJS CDN -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+<!-- Script del formulario -->
+<script>
+  import './Contact.js'
+</script>

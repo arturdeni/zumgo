@@ -1,0 +1,73 @@
+---
+// DondeEncaja.astro - Sección "¿Dónde encaja Zumgo?"
+
+// Datos de los bloques
+const ubicaciones = [
+  {
+    icon: 'gimnasios.svg',
+    title: 'GIMNASIOS',
+    description: 'Rehidratación natural post entreno',
+  },
+  {
+    icon: 'hospitales.svg',
+    title: 'HOSPITALES',
+    description: 'Sanitarios y visitantes buscan salud',
+  },
+  {
+    icon: 'centros-comerciales.svg',
+    title: 'CENTROS COMERCIALES',
+    description: 'Alternativa saludable a los refrescos',
+  },
+  {
+    icon: 'universidades.svg',
+    title: 'UNIVERSIDADES',
+    description: 'Público joven y consciente',
+  },
+  {
+    icon: 'aeropuertos.svg',
+    title: 'AEROPUERTOS',
+    description: 'Rápido, fresco y funcional',
+  },
+  {
+    icon: 'estaciones-tren.svg',
+    title: 'ESTACIONES DE TREN',
+    description: 'El zumo que esperas, sin esperas',
+  },
+]
+---
+
+<section class="donde-encaja" id="donde-encaja">
+  <div class="donde-encaja__content">
+    <h2 class="donde-encaja__title">¿Dónde encaja Zumgo?</h2>
+
+    <div class="donde-encaja__grid">
+      {
+        ubicaciones.map((ubicacion) => (
+          <div class="donde-encaja__item">
+            <div class="donde-encaja__icon">
+              <img
+                src={`/icons/${ubicacion.icon}`}
+                alt={`Icono ${ubicacion.title}`}
+                loading="lazy"
+              />
+            </div>
+
+            <h3 class="donde-encaja__item-title">{ubicacion.title}</h3>
+
+            <p class="donde-encaja__item-description">
+              {ubicacion.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('./DondeEncaja.css');
+</style>
+
+<script>
+  import './DondeEncaja.js'
+</script>

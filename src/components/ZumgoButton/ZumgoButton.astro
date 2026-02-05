@@ -1,0 +1,36 @@
+---
+// ZumgoButton.astro - Componente de botón reutilizable
+export interface Props {
+  variant?: 'yellow' | 'forest'
+  href?: string
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
+  onClick?: string
+  class?: string
+}
+
+const {
+  variant = 'yellow',
+  href,
+  type = 'button',
+  disabled = false,
+  onClick,
+  class: className = '',
+} = Astro.props
+
+// Si tiene href, es un enlace; si no, es un botón
+const Tag = href ? 'a' : 'button'
+const tagProps = href ? { href } : { type, disabled }
+---
+
+<Tag
+  class={`zumgo-button zumgo-button--${variant} ${className}`}
+  onclick={onClick}
+  {...tagProps}
+>
+  <slot />
+</Tag>
+
+<style>
+  @import url('./ZumgoButton.css');
+</style>
