@@ -4,36 +4,39 @@
 // Acceder al token de Mapbox desde variables de entorno
 const MAPBOX_TOKEN = import.meta.env.MAPBOX_ACCESS_TOKEN
 
-// Ubicaciones de ejemplo en Barcelona
+// Ubicaciones de las máquinas Zumgo
 const ubicaciones = [
   {
     id: 1,
-    nombre: 'FGC UAB',
+    nombre: 'Estació FGC Sarrià',
     tipo: 'Estación FGC',
-    coordenadas: [2.102638, 41.50295],
-    direccion:
-      'Universitat Autònoma de Barcelona, 08193 Bellaterra, Cerdanyola del Vallès, Barcelona',
+    coordenadas: [2.1208, 41.3981],
+    direccion: 'Via Augusta, 315, Sarrià-Sant Gervasi, Barcelona',
+    comingSoon: true,
   },
   {
     id: 2,
-    nombre: 'FGC Sarrià',
-    tipo: 'Estación FGC',
-    coordenadas: [2.12528, 41.3986],
-    direccion: 'Via Augusta, 08017 Barcelona',
+    nombre: 'Sige Sport Puigverd',
+    tipo: 'Centro Deportivo',
+    coordenadas: [2.0917, 41.613972],
+    direccion: 'Carrer País Valencià, 1, 08211 Castellar del Vallès, Barcelona',
+    comingSoon: false,
   },
   {
     id: 3,
-    nombre: 'FGC Plaça Catalunya',
-    tipo: 'Estación FGC',
-    coordenadas: [2.17, 41.38694],
-    direccion: 'Plaça de Catalunya, 08002 Barcelona',
+    nombre: 'Hospital Sagrat Cor',
+    tipo: 'Hospital',
+    coordenadas: [2.1456, 41.3888],
+    direccion: 'Carrer de Viladomat, 288, 08029 Barcelona',
+    comingSoon: false,
   },
   {
     id: 4,
-    nombre: 'Sport Aqua Polinyà',
-    tipo: 'Centro Deportivo',
-    coordenadas: [2.17033, 41.56294],
-    direccion: 'Calle Onze de Setembre, s/n, 08213 Polinyà, Barcelona',
+    nombre: 'Aeroport del Prat T1',
+    tipo: 'Aeropuerto',
+    coordenadas: [2.0733, 41.2884],
+    direccion: 'Terminal T1, Aeropuerto Josep Tarradellas Barcelona-El Prat',
+    comingSoon: false,
   },
 ]
 ---
@@ -50,13 +53,22 @@ const ubicaciones = [
         <div class="ubicaciones__list">
           {
             ubicaciones.map((ubicacion) => (
-              <div class="ubicacion-item" data-ubicacion-id={ubicacion.id}>
+              <div
+                class={`ubicacion-item ${ubicacion.comingSoon ? 'ubicacion-item--coming-soon' : ''}`}
+                data-ubicacion-id={ubicacion.id}
+                data-coming-soon={ubicacion.comingSoon}
+              >
                 <div class="ubicacion-item__marker">
                   <div class="ubicacion-item__pin" />
                 </div>
 
                 <div class="ubicacion-item__info">
-                  <h4 class="ubicacion-item__nombre">{ubicacion.nombre}</h4>
+                  <div class="ubicacion-item__header">
+                    <h4 class="ubicacion-item__nombre">{ubicacion.nombre}</h4>
+                    {ubicacion.comingSoon && (
+                      <span class="ubicacion-item__badge">Coming Soon</span>
+                    )}
+                  </div>
                   <p class="ubicacion-item__tipo">{ubicacion.tipo}</p>
                   <p class="ubicacion-item__direccion">{ubicacion.direccion}</p>
                 </div>
@@ -133,8 +145,8 @@ const ubicaciones = [
       map = new mapboxgl.Map({
         container: 'mapa-zumgo',
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [2.155, 41.3851],
-        zoom: window.innerWidth < 768 ? 11.5 : 12.5,
+        center: [2.11, 41.42],
+        zoom: window.innerWidth < 768 ? 9 : 10,
         pitch: 0,
         bearing: 0,
       })
@@ -163,6 +175,11 @@ const ubicaciones = [
     }
 
     ubicaciones.forEach((ubicacion) => {
+      // No añadir marcador para ubicaciones "Coming Soon"
+      if (ubicacion.comingSoon) {
+        return
+      }
+
       const markerElement = document.createElement('div')
       markerElement.className = 'custom-marker'
       markerElement.innerHTML = `
@@ -246,6 +263,11 @@ const ubicaciones = [
 
   function initUbicacionesInteraction() {
     document.querySelectorAll('.ubicacion-item').forEach((item) => {
+      // No añadir interacción para ubicaciones "Coming Soon"
+      if (item.dataset.comingSoon === 'true') {
+        return
+      }
+
       item.addEventListener('click', () => {
         const ubicacionId = parseInt(item.dataset.ubicacionId)
         highlightUbicacion(ubicacionId)
