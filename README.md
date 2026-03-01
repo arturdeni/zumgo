@@ -1,43 +1,81 @@
-# Astro Starter Kit: Minimal
+# Zumgo Landing
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Landing page corporativa de **Zumgo**, construida con Astro y enfocada en rendimiento, animaciones suaves y una narrativa de marca clara.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Qué hay en este repo
 
-## 🚀 Project Structure
+Este proyecto contiene una única página principal (`/`) compuesta por secciones modulares:
 
-Inside of your Astro project, you'll see the following folders and files:
+- Hero
+- Qué es Zumgo
+- Máquina
+- Estadísticas
+- CTA
+- Dónde encaja
+- FAQs
+- Ubicaciones
+- Contacto
+- Footer
+
+La estructura está pensada para iterar rápido en copy, diseño y animaciones sin romper el resto de la landing.
+
+## Stack técnico
+
+- **Astro 5**
+- **GSAP** para animaciones
+- CSS modular por componente + estilos globales
+
+## Estructura del proyecto
 
 ```text
-/
-├── public/
+.
+├── public/                  # assets estáticos
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/          # bloques visuales de la landing
+│   ├── layouts/             # layout base
+│   ├── pages/               # rutas (actualmente index.astro)
+│   └── styles/              # variables y estilos globales
+├── astro.config.mjs
+├── package.json
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Desarrollo local
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm install
+npm run dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Servidor de desarrollo: `http://localhost:4321`
 
-## 🧞 Commands
+## Build y preview
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run build
+npm run preview
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Scripts disponibles
 
-## 👀 Want to learn more?
+- `npm run dev` → modo desarrollo
+- `npm run build` → build de producción
+- `npm run preview` → previsualizar build
+- `npm run astro` → comandos de Astro CLI
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Convenciones recomendadas
+
+- Mantener cada sección de la home encapsulada en su carpeta de componente (`.astro`, `.css`, `.js` si aplica).
+- Evitar lógica de negocio compleja en componentes visuales.
+- Priorizar performance (evitar JS innecesario en cliente).
+- Mantener consistencia de naming en español para bloques de negocio de la landing.
+
+## Estado actual
+
+- ✅ Landing funcional y modular
+- ✅ Preparada para iteración de contenido/diseño
+- 🔜 Siguiente mejora sugerida: añadir guía de despliegue (Vercel/Netlify) y checklist SEO técnico
+
+---
+
+Si quieres, en el siguiente paso te preparo también un `CONTRIBUTING.md` corto para dejar estandarizado cómo trabajar en ramas, commits y PRs.
