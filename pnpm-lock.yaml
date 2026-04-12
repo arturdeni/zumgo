@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       astro:
-        specifier: ^5.12.5
+        specifier: ^5.18.1
         version: 5.18.1(rollup@4.60.1)(typescript@5.9.3)
       gsap:
-        specifier: ^3.13.0
+        specifier: ^3.14.2
         version: 3.14.2
     devDependencies:
       prettier-plugin-astro:
